@@ -65,4 +65,5 @@ class DefaultFirebaseOptions {
     storageBucket: 'fish2024-24597.appspot.com',
     iosBundleId: 'com.example.fishHackathon',
   );
+
 }
