@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "116084696051",
+    "project_id": "fish2024-24597",
+    "storage_bucket": "fish2024-24597.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:116084696051:android:5d39b05efe118364b7e886",
+        "android_client_info": {
+          "package_name": "com.example.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBW56uLOd2rF1e93BT1k72XeG2Wwoi3V7U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
