@@ -1,20 +1,21 @@
 import 'package:fish_hackathon/view/purpose_exist.dart';
-import 'package:fish_hackathon/view/purpose_nonexist.dart';
+import 'package:fish_hackathon/view/purpose_none_exist/purpose_none_exist.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:routemaster/routemaster.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  runApp(const ProviderScope(child: MyApp()));
+  runApp(ProviderScope(child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  MyApp({super.key});
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       title: 'Flutter Demo',
       theme: ThemeData(
         // This is the theme of your application.
@@ -35,7 +36,18 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      routerDelegate: RoutemasterDelegate(
+          routesBuilder: (context) => RouteMap(
+                routes: {
+                  '/': (_) => const MaterialPage<void>(
+                      child: MyHomePage(title: 'Flutter Demo Home')),
+                  '/purpose_exist': (_) =>
+                      const MaterialPage<void>(child: PurposeExist()),
+                  '/purpose_none_exist': (_) =>
+                      const MaterialPage<void>(child: PurposeNoneExist()),
+                },
+              )),
+      routeInformationParser: const RoutemasterParser(),
     );
   }
 }
@@ -86,19 +98,13 @@ class _MyHomePageState extends State<MyHomePage> {
           children: <Widget>[
             TextButton(
               onPressed: () {
-                Navigator.of(context).push(MaterialPageRoute<void>(
-                  builder: (context) {
-                    return PurposeExist();
-                  },
-                ));
+                Routemaster.of(context).push('/purpose_exist');
               },
               child: const Text('目的地あり'),
             ),
             TextButton(
               onPressed: () {
-                Navigator.of(context).push(MaterialPageRoute<void>(builder: (context) {
-                  return PurposeNonexist();
-                }));
+                Routemaster.of(context).push('/purpose_none_exist');
               },
               child: const Text("目的地なし"),
             )
