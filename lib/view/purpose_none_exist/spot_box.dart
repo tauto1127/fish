@@ -1,3 +1,4 @@
+import 'package:fish_hackathon/view/map_dummy.dart';
 import 'package:flutter/material.dart';
 
 class SpotBox extends StatelessWidget {
@@ -7,11 +8,23 @@ class SpotBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-          children: [
-    Text(name),
-    Image(image: AssetImage(imagePath))
-          ],
-        );
+    return GestureDetector(
+      onTap: () => {
+        Navigator.of(context).push(MaterialPageRoute<void>(
+                  builder: (context) {
+                    return const MapDummy();
+                  },
+        )),
+      },
+      child: Container(
+        color: Colors.blue,
+        child: Column(
+              children: [
+        Text(name),
+        Image(image: AssetImage(imagePath))
+              ],
+            ),
+      ),
+    );
   }
 }
