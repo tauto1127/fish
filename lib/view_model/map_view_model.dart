@@ -14,11 +14,29 @@ class MapViewModel extends _$MapViewModel {
   MapViewState build() {
     return const MapViewState(
       elements: [
-        Wall(point: Point(0, 4000), end: Point(6000, 4000)),
-        Floor(point: Point(0, 2000), width: 6000, height: 2000),
-        Room(point: Point(0, 0), width: 2000, height: 2000, room: RoomType.Computer363, door: Point(1000, 2000)),
-        Room(point: Point(2000, 0), width: 2000, height: 2000, room: RoomType.Computer364, door: Point(1000, 2000)),
-        Room(point: Point(4000, 0), width: 2000, height: 2000, room: RoomType.Computer365, door: Point(1000, 2000))
+        Wall(point: Point(0, 4000), end: Point(6000, 4000), floorNum: 3),
+        Floor(point: Point(0, 2000), width: 6000, height: 2000, floorNum: 3),
+        Room(
+            point: Point(0, 0),
+            width: 2000,
+            height: 2000,
+            room: RoomType.Computer363,
+            door: Point(1000, 2000),
+            floorNum: 3),
+        Room(
+            point: Point(2000, 0),
+            width: 2000,
+            height: 2000,
+            room: RoomType.Computer364,
+            door: Point(1000, 2000),
+            floorNum: 3),
+        Room(
+            point: Point(4000, 0),
+            width: 2000,
+            height: 2000,
+            room: RoomType.Computer365,
+            door: Point(1000, 2000),
+            floorNum: 3),
       ],
     );
   }
