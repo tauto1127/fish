@@ -25,7 +25,7 @@ class NaviView extends StatelessWidget {
             }
           }
           return Text(
-              "目的地: ${roomNameDict[destination]}, (${destinationPoint.x}, ${destinationPoint.y})");
+              "目的地: ${destination!.name}, (${destinationPoint.x}, ${destinationPoint.y})");
         },
       )),
     );

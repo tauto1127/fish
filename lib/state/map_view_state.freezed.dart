@@ -17,6 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$MapViewState {
   List<MapElement> get elements => throw _privateConstructorUsedError;
+  List<Room> get rooms => throw _privateConstructorUsedError;
 
   /// Create a copy of MapViewState
   /// with the given fields replaced by the non-null parameter values.
@@ -31,7 +32,7 @@ abstract class $MapViewStateCopyWith<$Res> {
           MapViewState value, $Res Function(MapViewState) then) =
       _$MapViewStateCopyWithImpl<$Res, MapViewState>;
   @useResult
-  $Res call({List<MapElement> elements});
+  $Res call({List<MapElement> elements, List<Room> rooms});
 }
 
 /// @nodoc
@@ -50,12 +51,17 @@ class _$MapViewStateCopyWithImpl<$Res, $Val extends MapViewState>
   @override
   $Res call({
     Object? elements = null,
+    Object? rooms = null,
   }) {
     return _then(_value.copyWith(
       elements: null == elements
           ? _value.elements
           : elements // ignore: cast_nullable_to_non_nullable
               as List<MapElement>,
+      rooms: null == rooms
+          ? _value.rooms
+          : rooms // ignore: cast_nullable_to_non_nullable
+              as List<Room>,
     ) as $Val);
   }
 }
@@ -68,7 +74,7 @@ abstract class _$$MapViewStateImplCopyWith<$Res>
       __$$MapViewStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<MapElement> elements});
+  $Res call({List<MapElement> elements, List<Room> rooms});
 }
 
 /// @nodoc
@@ -85,12 +91,17 @@ class __$$MapViewStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? elements = null,
+    Object? rooms = null,
   }) {
     return _then(_$MapViewStateImpl(
       elements: null == elements
           ? _value._elements
           : elements // ignore: cast_nullable_to_non_nullable
               as List<MapElement>,
+      rooms: null == rooms
+          ? _value._rooms
+          : rooms // ignore: cast_nullable_to_non_nullable
+              as List<Room>,
     ));
   }
 }
@@ -98,8 +109,11 @@ class __$$MapViewStateImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$MapViewStateImpl implements _MapViewState {
-  const _$MapViewStateImpl({final List<MapElement> elements = const []})
-      : _elements = elements;
+  const _$MapViewStateImpl(
+      {final List<MapElement> elements = const [],
+      final List<Room> rooms = const []})
+      : _elements = elements,
+        _rooms = rooms;
 
   final List<MapElement> _elements;
   @override
@@ -110,9 +124,18 @@ class _$MapViewStateImpl implements _MapViewState {
     return EqualUnmodifiableListView(_elements);
   }
 
+  final List<Room> _rooms;
+  @override
+  @JsonKey()
+  List<Room> get rooms {
+    if (_rooms is EqualUnmodifiableListView) return _rooms;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_rooms);
+  }
+
   @override
   String toString() {
-    return 'MapViewState(elements: $elements)';
+    return 'MapViewState(elements: $elements, rooms: $rooms)';
   }
 
   @override
@@ -120,12 +143,15 @@ class _$MapViewStateImpl implements _MapViewState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$MapViewStateImpl &&
-            const DeepCollectionEquality().equals(other._elements, _elements));
+            const DeepCollectionEquality().equals(other._elements, _elements) &&
+            const DeepCollectionEquality().equals(other._rooms, _rooms));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_elements));
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(_elements),
+      const DeepCollectionEquality().hash(_rooms));
 
   /// Create a copy of MapViewState
   /// with the given fields replaced by the non-null parameter values.
@@ -137,11 +163,14 @@ class _$MapViewStateImpl implements _MapViewState {
 }
 
 abstract class _MapViewState implements MapViewState {
-  const factory _MapViewState({final List<MapElement> elements}) =
-      _$MapViewStateImpl;
+  const factory _MapViewState(
+      {final List<MapElement> elements,
+      final List<Room> rooms}) = _$MapViewStateImpl;
 
   @override
   List<MapElement> get elements;
+  @override
+  List<Room> get rooms;
 
   /// Create a copy of MapViewState
   /// with the given fields replaced by the non-null parameter values.

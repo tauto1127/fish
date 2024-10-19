@@ -7,13 +7,13 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 enum BeaconType { A, B, C }
 
-enum RoomType { Computer363, Computer364, Computer365 }
-
-Map<RoomType, String> roomNameDict = {
-  RoomType.Computer363: "363",
-  RoomType.Computer364: "364",
-  RoomType.Computer365: "365",
-};
+enum RoomType {
+  computer363('363'),
+  computer364('364'),
+  computer365('365');
+  const RoomType(this.displayName);
+  final String displayName;
+  }
 
 abstract class MapElement {
   const MapElement({
@@ -44,12 +44,12 @@ class Room extends MapElement {
     required super.point,
     required this.width,
     required this.height,
-    required this.room,
+    required this.roomType,
     required this.door,
   });
   final int width;
   final int height;
-  final RoomType room;
+  final RoomType roomType;
   final Point door;
   Point getDoor() => door;
 }

@@ -14,18 +14,14 @@ class PurposeExist extends StatelessWidget {
       builder: (context, ref, child) {
         final state = ref.watch(mapViewModelProvider);
         return ListView.builder(
-          itemCount: state.elements.length,
+          itemCount: state.rooms.length,
           itemBuilder: (context, index) {
-            final element = state.elements[index];
-            late Room roomData;
-            if (element is Room) {
-              roomData = element;
-            }
+            final roomData = state.rooms[index];
             return ListTile(
-              // title: Text(roomNameDict[roomData]),
-              // subtitle: Text("(${element.x}, ${element.y})"),
+              title: Text(roomData.roomType.name),
+              subtitle: Text("(${roomData.door.x}, ${roomData.door.y})"),
               onTap: () {
-                ref.read(naviViewModelProvider.notifier).setDestination(roomData.room);
+                ref.read(naviViewModelProvider.notifier).setDestination(roomData.roomType);
                 Navigator.of(context).push(MaterialPageRoute(builder: (context) {
                   return const NaviView();
                 }));

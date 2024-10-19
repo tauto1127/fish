@@ -7,5 +7,6 @@ part 'map_view_state.freezed.dart';
 class MapViewState with _$MapViewState {
   const factory MapViewState({
     @Default([]) List<MapElement> elements,
+    @Default([]) List<Room> rooms,
   }) = _MapViewState;
 }
