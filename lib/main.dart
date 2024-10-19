@@ -96,8 +96,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             TextButton(
               onPressed: () {
-                Navigator.of(context)
-                    .push(MaterialPageRoute<void>(builder: (context) {
+                Navigator.of(context).push(MaterialPageRoute<void>(builder: (context) {
                   return PurposeNonexist();
                 }));
               },
