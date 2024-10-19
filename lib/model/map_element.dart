@@ -1,6 +1,5 @@
 import 'dart:math';
 
-import 'package:fish_hackathon/model/Rooms.dart';
 import 'package:fish_hackathon/model/map_element_type.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -10,7 +9,7 @@ enum BeaconType { A, B, C }
 
 enum RoomType { Computer363, Computer364, Computer365 }
 
-Map roomNameDict = {
+Map<RoomType, String> roomNameDict = {
   RoomType.Computer363: "363",
   RoomType.Computer364: "364",
   RoomType.Computer365: "365",

@@ -1,3 +1,4 @@
+import 'package:fish_hackathon/model/map_element.dart';
 import 'package:fish_hackathon/model/recommend_spot_model.dart';
 import 'package:fish_hackathon/state/recommend_view_state.dart';
 import 'package:fish_hackathon/view_model/map_view_model.dart';
@@ -8,8 +9,8 @@ part 'recommend_spot_view_model.g.dart';
 @Riverpod(keepAlive: true)
 class RecommendSpotViewModel extends _$RecommendSpotViewModel {
   final spots = [
-    const RecommendSpotModel(mapElementIndex: 0, imagePath: "assets/image/squid.jpg", subText: "11:30~13:00"),
-    const RecommendSpotModel(mapElementIndex: 1, imagePath: "assets/image/map.webp")
+    const RecommendSpotModel(mapElementIndex: 2, imagePath: "assets/image/squid.jpg", subText: "11:30~13:00"),
+    const RecommendSpotModel(mapElementIndex: 3, imagePath: "assets/image/map.webp")
   ];
   @override
   RecommendViewState build() {
@@ -21,7 +22,17 @@ class RecommendSpotViewModel extends _$RecommendSpotViewModel {
 
   void filter(String query) {
     final mapState = ref.watch(mapViewModelProvider).elements;
-    final filteredSpots = spots.where((element) => mapState[element.mapElementIndex].name.contains(query)).toList();
-    state = state.copyWith(filteredSpots: filteredSpots);
+    // final filteredSpots = spots.where((element) => mapState[element.mapElementIndex].name.contains(query)).toList();
+    final filterdSpots = spots.where((RecommendSpotModel element){
+      MapElement el = mapState[element.mapElementIndex];
+      if (el is Room){
+        if(roomNameDict[el.room]!.contains(query)){
+          return true;
+        }
+      }
+      return false;
+
+    }).toList();
+    state = state.copyWith(filteredSpots: filterdSpots);
   }
 }

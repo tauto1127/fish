@@ -22,8 +22,8 @@ class PurposeExist extends StatelessWidget {
               roomData = element;
             }
             return ListTile(
-              title: Text(roomNameDict[roomData]),
-              subtitle: Text("(${element.x}, ${element.y})"),
+              // title: Text(roomNameDict[roomData]),
+              // subtitle: Text("(${element.x}, ${element.y})"),
               onTap: () {
                 ref.read(naviViewModelProvider.notifier).setDestination(roomData.room);
                 Navigator.of(context).push(MaterialPageRoute(builder: (context) {
