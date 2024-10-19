@@ -32,6 +32,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
+      debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
         // This is the theme of your application.
@@ -49,21 +50,15 @@ class MyApp extends StatelessWidget {
         //
         // This works for code too, not just values: Most code changes can be
         // tested with just a hot reload.
-        colorScheme: ColorScheme.fromSeed(
-            seedColor: Colors.deepPurple,
-            background: Colors.white,
-            surface: Colors.white),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple, background: Colors.white, surface: Colors.white),
         useMaterial3: true,
       ),
       routerDelegate: RoutemasterDelegate(
           routesBuilder: (context) => RouteMap(
                 routes: {
-                  '/': (_) => const MaterialPage<void>(
-                      child: MyHomePage(title: 'Flutter Demo Home')),
-                  '/purpose_exist': (_) =>
-                      const MaterialPage<void>(child: PurposeExist()),
-                  '/purpose_none_exist': (_) =>
-                      MaterialPage<void>(child: PurposeNoneExist()),
+                  '/': (_) => const MaterialPage<void>(child: MyHomePage(title: 'Flutter Demo Home')),
+                  '/purpose_exist': (_) => const MaterialPage<void>(child: PurposeExist()),
+                  '/purpose_none_exist': (_) => MaterialPage<void>(child: PurposeNoneExist()),
                   '/navi': (_) => const MaterialPage<void>(child: NaviView())
                 },
               )),
