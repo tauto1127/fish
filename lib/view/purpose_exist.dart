@@ -1,10 +1,14 @@
+import 'dart:math';
+
 import 'package:fish_hackathon/const/styles.dart';
 import 'package:fish_hackathon/main.dart';
+import 'package:fish_hackathon/model/direction.dart';
 import 'package:fish_hackathon/view/navi_view.dart';
 import 'package:fish_hackathon/view_model/navi_view_model.dart';
 import 'package:fish_hackathon/view_model/purpose_exist_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:routemaster/routemaster.dart';
 
 class PurposeExist extends StatelessWidget {
   const PurposeExist({super.key});
@@ -58,16 +62,16 @@ class PurposeExist extends StatelessWidget {
                               tileColor: Colors.grey[300],
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(15)),
-                              title: Text(element.room.name),
-                              //subtitle: Text("(${element.x}, ${element.y})"),
+                              title: Text(element.roomType.displayName),
                               onTap: () {
                                 ref
                                     .read(naviViewModelProvider.notifier)
-                                    .setDestination(element.room);
-                                Navigator.of(context)
-                                    .push(MaterialPageRoute(builder: (context) {
-                                  return const NaviView();
-                                }));
+                                    .setDestination(element.roomType);
+                                ref
+                                    .read(naviViewModelProvider.notifier)
+                                    .setMockBeaconData();
+                                    // .setCurrentLocation(point: const Point<int>(5000, 3000), direction: Direction.west);
+                                Routemaster.of(context).push('/navi');
                               },
                             ),
                           );

@@ -6,12 +6,11 @@ part of 'map_view_model.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$mapViewModelHash() => r'9fbbcd1eb56cece434d57377f6e1f1f8e2df0bfe';
+String _$mapViewModelHash() => r'd485cdca7c56a773e2b2309fdd898472f8b9c995';
 
 /// See also [MapViewModel].
 @ProviderFor(MapViewModel)
-final mapViewModelProvider =
-    NotifierProvider<MapViewModel, MapViewState>.internal(
+final mapViewModelProvider = NotifierProvider<MapViewModel, MapModel>.internal(
   MapViewModel.new,
   name: r'mapViewModelProvider',
   debugGetCreateSourceHash:
@@ -20,6 +19,6 @@ final mapViewModelProvider =
   allTransitiveDependencies: null,
 );
 
-typedef _$MapViewModel = Notifier<MapViewState>;
+typedef _$MapViewModel = Notifier<MapModel>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

@@ -7,7 +7,7 @@ part of 'purpose_exist_view_model.dart';
 // **************************************************************************
 
 String _$purposeExistViewModelHash() =>
-    r'27780c351b427d7eaa17295781bc6eb586c39c0f';
+    r'c60bdc44868977a9113659a248072718bc6eb3dd';
 
 /// See also [PurposeExistViewModel].
 @ProviderFor(PurposeExistViewModel)

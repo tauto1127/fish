@@ -19,7 +19,7 @@ class PurposeExistViewModel extends _$PurposeExistViewModel {
       return;
     }
     final filterdSpots = state.where((Room element) {
-      if (roomNameDict[element.room]!.contains(query)) {
+      if (element.roomType.displayName.contains(query)) {
         return true;
       }
       return false;
