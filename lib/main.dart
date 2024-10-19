@@ -40,12 +40,9 @@ class MyApp extends StatelessWidget {
       routerDelegate: RoutemasterDelegate(
           routesBuilder: (context) => RouteMap(
                 routes: {
-                  '/': (_) => const MaterialPage<void>(
-                      child: MyHomePage(title: 'Flutter Demo Home')),
-                  '/purpose_exist': (_) =>
-                      const MaterialPage<void>(child: PurposeExist()),
-                  '/purpose_none_exist': (_) =>
-                      MaterialPage<void>(child: PurposeNoneExist()),
+                  '/': (_) => const MaterialPage<void>(child: MyHomePage(title: 'Flutter Demo Home')),
+                  '/purpose_exist': (_) => const MaterialPage<void>(child: PurposeExist()),
+                  '/purpose_none_exist': (_) => MaterialPage<void>(child: PurposeNoneExist()),
                 },
               )),
       routeInformationParser: const RoutemasterParser(),
@@ -71,16 +68,15 @@ class MyHomePage extends StatefulWidget {
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
-PreferredSizeWidget MirasutaAppBar = 
-AppBar(
-        backgroundColor: Colors.white,
-        title: SvgPicture.asset(
-              'image/MIRASUTA_logo.svg',
-              width: 50,
-              height: 50,
-              ),
-        centerTitle: true,
-      );
+PreferredSizeWidget MirasutaAppBar = AppBar(
+  backgroundColor: Colors.white,
+  title: SvgPicture.asset(
+    'image/MIRASUTA_logo.svg',
+    width: 50,
+    height: 50,
+  ),
+  centerTitle: true,
+);
 
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
@@ -104,7 +100,7 @@ class _MyHomePageState extends State<MyHomePage> {
     // The Flutter framework has been optimized to make rerunning build methods
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
-    const widget = Widget ;
+    const widget = Widget;
     return Scaffold(
       appBar: MirasutaAppBar,
       body: Center(

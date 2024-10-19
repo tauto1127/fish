@@ -14,7 +14,7 @@ class NaviView extends StatelessWidget {
           final mapState = ref.watch(mapViewModelProvider);
           final naviState = ref.watch(naviViewModelProvider);
           final destination = mapState.elements[naviState.destinationIndex];
-          return Text("目的地: ${destination.name}, (${destination.x}, ${destination.y})");
+          return Text("目的: ${destination.name}, (${destination.x}, ${destination.y})");
         },
       )),
     );
