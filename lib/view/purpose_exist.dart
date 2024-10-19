@@ -1,3 +1,4 @@
+import 'package:fish_hackathon/model/map_element.dart';
 import 'package:fish_hackathon/view/navi_view.dart';
 import 'package:fish_hackathon/view_model/map_view_model.dart';
 import 'package:fish_hackathon/view_model/navi_view_model.dart';
@@ -16,13 +17,17 @@ class PurposeExist extends StatelessWidget {
           itemCount: state.elements.length,
           itemBuilder: (context, index) {
             final element = state.elements[index];
+            late Room roomData;
+            if (element is Room) {
+              roomData = element;
+            }
             return ListTile(
-              title: Text(element.name),
+              title: Text(roomNameDict[roomData]),
               subtitle: Text("(${element.x}, ${element.y})"),
               onTap: () {
-                ref.read(naviViewModelProvider.notifier).setDestination(index);
+                ref.read(naviViewModelProvider.notifier).setDestination(roomData.room);
                 Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-                  return NaviView();
+                  return const NaviView();
                 }));
               },
             );

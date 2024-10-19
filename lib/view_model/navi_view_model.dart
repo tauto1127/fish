@@ -13,7 +13,7 @@ class NaviViewModel extends _$NaviViewModel {
     return const NaviViewState();
   }
 
-  void setDestination(int index) {
-    state = state.copyWith(destinationIndex: index);
+  void setDestination(RoomType room) {
+    state = state.copyWith(destinationRoom: room);
   }
 }
