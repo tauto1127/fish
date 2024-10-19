@@ -40,16 +40,17 @@ class Beacon extends MapElement {
 }
 
 class Room extends MapElement {
-  const Room({
+  Room({
     required super.point,
     required this.width,
     required this.height,
     required this.roomType,
-    required this.door,
-  });
+    required Point<int> doorOffset,
+  }) {
+    door = Point<int>(point.x+doorOffset.x, point.y+doorOffset.y);
+  }
   final int width;
   final int height;
   final RoomType roomType;
-  final Point<int> door;
-  Point<int> getDoor() => door;
+  late Point<int> door;
 }
