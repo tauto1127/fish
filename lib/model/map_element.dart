@@ -17,31 +17,39 @@ Map<RoomType, String> roomNameDict = {
 
 abstract class MapElement {
   const MapElement({
+    required this.floorNum,
     required this.point,
   });
   final Point point;
+  final int floorNum;
 }
 
 class Floor extends MapElement {
   const Floor(
-      {required super.point, required this.width, required this.height});
+      {required super.point,
+      required super.floorNum,
+      required this.width,
+      required this.height});
   final int width;
   final int height;
 }
 
 class Wall extends MapElement {
-  const Wall({required super.point, required this.end});
+  const Wall(
+      {required super.point, required super.floorNum, required this.end});
   final Point end;
 }
 
 class Beacon extends MapElement {
-  const Beacon({required super.point, required this.beacon});
+  const Beacon(
+      {required super.point, required super.floorNum, required this.beacon});
   final BeaconType beacon;
 }
 
 class Room extends MapElement {
   const Room({
     required super.point,
+    required super.floorNum,
     required this.width,
     required this.height,
     required this.room,

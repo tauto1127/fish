@@ -30,6 +30,21 @@ class PurposeExist extends StatelessWidget {
                       },
                     ),
                   ),
+                  const SizedBox(height: 10),
+                  const Align(
+                    alignment: Alignment.topLeft,
+                    child: Row(
+                      children: [
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Text(
+                          "- 3F",
+                          style: TextStyle(fontSize: 18),
+                        ),
+                      ],
+                    ),
+                  ),
                   Expanded(
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
