@@ -25,7 +25,7 @@ class RecommendSpotViewModel extends _$RecommendSpotViewModel {
     final filteredSpots = spots.where((RecommendSpotModel element){
       MapElement el = mapState[element.mapElementIndex];
       if (el is Room){
-        if(el.roomType.name.contains(query)){
+        if(el.roomType.displayName.contains(query)){
           return true;
         }
       }

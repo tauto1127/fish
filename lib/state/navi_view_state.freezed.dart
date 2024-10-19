@@ -16,8 +16,9 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$NaviViewState {
-  Point<int>? get startPoint => throw _privateConstructorUsedError;
+  FloorName? get floorName => throw _privateConstructorUsedError;
   Point<int>? get currentPoint => throw _privateConstructorUsedError;
+  Direction? get currentDirection => throw _privateConstructorUsedError;
   RoomType? get destinationRoom => throw _privateConstructorUsedError;
 
   /// Create a copy of NaviViewState
@@ -34,8 +35,9 @@ abstract class $NaviViewStateCopyWith<$Res> {
       _$NaviViewStateCopyWithImpl<$Res, NaviViewState>;
   @useResult
   $Res call(
-      {Point<int>? startPoint,
+      {FloorName? floorName,
       Point<int>? currentPoint,
+      Direction? currentDirection,
       RoomType? destinationRoom});
 }
 
@@ -54,19 +56,24 @@ class _$NaviViewStateCopyWithImpl<$Res, $Val extends NaviViewState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? startPoint = freezed,
+    Object? floorName = freezed,
     Object? currentPoint = freezed,
+    Object? currentDirection = freezed,
     Object? destinationRoom = freezed,
   }) {
     return _then(_value.copyWith(
-      startPoint: freezed == startPoint
-          ? _value.startPoint
-          : startPoint // ignore: cast_nullable_to_non_nullable
-              as Point<int>?,
+      floorName: freezed == floorName
+          ? _value.floorName
+          : floorName // ignore: cast_nullable_to_non_nullable
+              as FloorName?,
       currentPoint: freezed == currentPoint
           ? _value.currentPoint
           : currentPoint // ignore: cast_nullable_to_non_nullable
               as Point<int>?,
+      currentDirection: freezed == currentDirection
+          ? _value.currentDirection
+          : currentDirection // ignore: cast_nullable_to_non_nullable
+              as Direction?,
       destinationRoom: freezed == destinationRoom
           ? _value.destinationRoom
           : destinationRoom // ignore: cast_nullable_to_non_nullable
@@ -84,8 +91,9 @@ abstract class _$$NaviViewStateImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {Point<int>? startPoint,
+      {FloorName? floorName,
       Point<int>? currentPoint,
+      Direction? currentDirection,
       RoomType? destinationRoom});
 }
 
@@ -102,19 +110,24 @@ class __$$NaviViewStateImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? startPoint = freezed,
+    Object? floorName = freezed,
     Object? currentPoint = freezed,
+    Object? currentDirection = freezed,
     Object? destinationRoom = freezed,
   }) {
     return _then(_$NaviViewStateImpl(
-      startPoint: freezed == startPoint
-          ? _value.startPoint
-          : startPoint // ignore: cast_nullable_to_non_nullable
-              as Point<int>?,
+      floorName: freezed == floorName
+          ? _value.floorName
+          : floorName // ignore: cast_nullable_to_non_nullable
+              as FloorName?,
       currentPoint: freezed == currentPoint
           ? _value.currentPoint
           : currentPoint // ignore: cast_nullable_to_non_nullable
               as Point<int>?,
+      currentDirection: freezed == currentDirection
+          ? _value.currentDirection
+          : currentDirection // ignore: cast_nullable_to_non_nullable
+              as Direction?,
       destinationRoom: freezed == destinationRoom
           ? _value.destinationRoom
           : destinationRoom // ignore: cast_nullable_to_non_nullable
@@ -127,18 +140,23 @@ class __$$NaviViewStateImplCopyWithImpl<$Res>
 
 class _$NaviViewStateImpl implements _NaviViewState {
   const _$NaviViewStateImpl(
-      {this.startPoint, this.currentPoint, this.destinationRoom});
+      {this.floorName,
+      this.currentPoint,
+      this.currentDirection,
+      this.destinationRoom});
 
   @override
-  final Point<int>? startPoint;
+  final FloorName? floorName;
   @override
   final Point<int>? currentPoint;
+  @override
+  final Direction? currentDirection;
   @override
   final RoomType? destinationRoom;
 
   @override
   String toString() {
-    return 'NaviViewState(startPoint: $startPoint, currentPoint: $currentPoint, destinationRoom: $destinationRoom)';
+    return 'NaviViewState(floorName: $floorName, currentPoint: $currentPoint, currentDirection: $currentDirection, destinationRoom: $destinationRoom)';
   }
 
   @override
@@ -146,17 +164,19 @@ class _$NaviViewStateImpl implements _NaviViewState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$NaviViewStateImpl &&
-            (identical(other.startPoint, startPoint) ||
-                other.startPoint == startPoint) &&
+            (identical(other.floorName, floorName) ||
+                other.floorName == floorName) &&
             (identical(other.currentPoint, currentPoint) ||
                 other.currentPoint == currentPoint) &&
+            (identical(other.currentDirection, currentDirection) ||
+                other.currentDirection == currentDirection) &&
             (identical(other.destinationRoom, destinationRoom) ||
                 other.destinationRoom == destinationRoom));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, startPoint, currentPoint, destinationRoom);
+  int get hashCode => Object.hash(
+      runtimeType, floorName, currentPoint, currentDirection, destinationRoom);
 
   /// Create a copy of NaviViewState
   /// with the given fields replaced by the non-null parameter values.
@@ -169,14 +189,17 @@ class _$NaviViewStateImpl implements _NaviViewState {
 
 abstract class _NaviViewState implements NaviViewState {
   const factory _NaviViewState(
-      {final Point<int>? startPoint,
+      {final FloorName? floorName,
       final Point<int>? currentPoint,
+      final Direction? currentDirection,
       final RoomType? destinationRoom}) = _$NaviViewStateImpl;
 
   @override
-  Point<int>? get startPoint;
+  FloorName? get floorName;
   @override
   Point<int>? get currentPoint;
+  @override
+  Direction? get currentDirection;
   @override
   RoomType? get destinationRoom;
 

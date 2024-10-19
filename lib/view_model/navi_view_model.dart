@@ -1,8 +1,10 @@
 import 'dart:math' as math;
 import 'dart:math';
 
+import 'package:fish_hackathon/model/direction.dart';
 import 'package:fish_hackathon/model/map_element_type.dart';
 import 'package:fish_hackathon/model/map_element.dart';
+import 'package:fish_hackathon/model/map_model.dart';
 import 'package:fish_hackathon/state/navi_view_state.dart';
 import 'package:fish_hackathon/view_model/map_view_model.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
@@ -16,22 +18,19 @@ class NaviViewModel extends _$NaviViewModel {
     return const NaviViewState();
   }
 
-  void setStartPoint({required Point<int> point}) {
+  void setCurrentLocation({required FloorName floorName, required Point<int> point, required Direction direction}) {
     state = state.copyWith(
-      startPoint: point,
-      currentPoint: point
+      floorName: floorName,
+      currentPoint: point,
+      currentDirection: direction
     );
-  }
-
-  void setCurrentPoint({required Point<int> point}) {
-    state = state.copyWith(currentPoint: point);
   }
 
   Future<void> setMockBeaconData() async {
     var random = math.Random();
     while (true) {
+      setCurrentLocation(floorName: FloorName.third, point: const Point<int>(5000, 3000), direction: Direction.west);
       await Future.delayed(const Duration(seconds: 1));
-      setCurrentPoint(point: Point<int>(random.nextInt(4000)+1000, random.nextInt(4000)+1000));
     }
   }
 

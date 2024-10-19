@@ -13,6 +13,7 @@ class MapViewModel extends _$MapViewModel {
   @override
   MapModel build() {
     return MapModel(
+      floorName: FloorName.third,
       elements: const [
         Wall(point: Point<int>(0, 4000), end: Point<int>(6000, 4000)),
         Floor(point: Point<int>(0, 2000), width: 6000, height: 2000),

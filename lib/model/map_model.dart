@@ -3,9 +3,18 @@ import 'dart:math';
 import 'package:fish_hackathon/model/map_element.dart';
 import 'package:fish_hackathon/model/direction.dart';
 
+enum FloorName {
+  first,
+  second,
+  third,
+  fourth,
+  fifth,
+  rSixth,
+  rSeventh
+}
+
 class MapModel {
-  final movementPadding = 200;
-  MapModel({required this.elements}) {
+  MapModel({required this.floorName, required this.elements}) {
     final rooms = elements.whereType<Room>().toList();
     final roomTypes = rooms.map((room) => room.roomType);
     roomDict = Map.fromIterables(roomTypes, rooms);
@@ -18,13 +27,15 @@ class MapModel {
         walls.where((wall) => wall.point.y == wall.end.y).toList();
     eastWestWalls.sort((a, b) => a.point.x.compareTo(b.point.x));
   }
+  final movementPadding = 200;
+  FloorName floorName;
   List<MapElement> elements;
   Map<RoomType, Room>? roomDict;
   List<Wall> walls = List.empty();
   List<Wall> northSouthWalls = List.empty();
   List<Wall> eastWestWalls = List.empty();
 
-  Direction _getDirectionOfMovement(
+  Direction getDirectionOfMovement(
       {required Point<int> currentPoint, required Point<int> destination}) {
     int xDirectionDiff = destination.x - currentPoint.x;
     int yDirectionDiff = destination.y - currentPoint.y;
@@ -46,39 +57,41 @@ class MapModel {
 
   Point<int> getNextMidpoint(
       {required Point<int> currentPoint, required Point<int> destination}) {
-    switch (_getDirectionOfMovement(
+    switch (getDirectionOfMovement(
         currentPoint: currentPoint, destination: destination)) {
       case Direction.north:
         for (Wall wall in eastWestWalls) {
-          if (currentPoint.y<=wall.point.y-movementPadding && isWithinRange(value: currentPoint.x, start: wall.point.x, end: wall.end.x)) {
+          if (currentPoint.y<=wall.point.y-movementPadding && _isWithinRange(value: currentPoint.x, start: wall.point.x, end: wall.end.x)) {
             return Point(currentPoint.x, wall.point.y-movementPadding);
           }
         }
         break;
       case Direction.south:
         for (Wall wall in eastWestWalls.reversed) {
-          if (wall.point.y+movementPadding<= currentPoint.y && isWithinRange(value: currentPoint.x, start: wall.point.x, end: wall.end.x)) {
+          if (wall.point.y+movementPadding<= currentPoint.y && _isWithinRange(value: currentPoint.x, start: wall.point.x, end: wall.end.x)) {
             return Point(currentPoint.x, wall.point.y+movementPadding);
           }
         }
         break;
       case Direction.east:
         for (Wall wall in northSouthWalls) {
-          if (currentPoint.x<=wall.point.x-movementPadding && isWithinRange(value: currentPoint.y, start: wall.point.y, end: wall.end.y)) {
+          if (currentPoint.x<=wall.point.x-movementPadding && _isWithinRange(value: currentPoint.y, start: wall.point.y, end: wall.end.y)) {
             return Point(wall.point.x-movementPadding, currentPoint.y);
           }
         }
         break;
       case Direction.west:
         for (Wall wall in northSouthWalls.reversed) {
-          if (wall.point.x+movementPadding<= currentPoint.x && isWithinRange(value: currentPoint.y, start: wall.point.y, end: wall.end.y)) {
+          if (wall.point.x+movementPadding<= currentPoint.x && _isWithinRange(value: currentPoint.y, start: wall.point.y, end: wall.end.y)) {
             return Point(wall.point.x+movementPadding, currentPoint.y);
           }
         }
         break;
+      default:
+      return const Point(-1, -1);
     }
     return const Point(-1, -1);
   }
 
-  bool isWithinRange({required int value, required int start, required int end}) => (start <= value&&value <= end);
+  bool _isWithinRange({required int value, required int start, required int end}) => (start <= value&&value <= end);
 }

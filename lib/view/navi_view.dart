@@ -19,22 +19,18 @@ class NaviView extends ConsumerWidget {
           final naviState = ref.watch(naviViewModelProvider);
           final currentPoint = naviState.currentPoint;
           final destination = naviState.destinationRoom;
-          late Point<int> destinationPoint;
-          for (MapElement element in mapState.elements) {
-            if (element is Room) {
-              final Room roomData = element;
-              destinationPoint = roomData.door;
-            }
-          }
+          final Point<int> destinationPoint = mapState.roomDict![destination!]!.getDoor();
+          final direction = mapState.getDirectionOfMovement(currentPoint: currentPoint!, destination: destinationPoint);
+          final nextMidpoint = mapState.getNextMidpoint(currentPoint: currentPoint, destination: destinationPoint);
+
           return Text(
-              "現在地: (${currentPoint!.x}, ${currentPoint.y})\n"
-              "目的地: ${destination!.name}, (${destinationPoint.x}, ${destinationPoint.y})");
+              "現在地: (${currentPoint.x}, ${currentPoint.y})\n"
+              "目的地: ${destination.name}, (${destinationPoint.x}, ${destinationPoint.y})\n"
+              "進行方向: ${direction.name}\n"
+              "中間地点: (${nextMidpoint.x}, ${nextMidpoint.y})"
+          );
         },
       )),
     );
   }
-
-  // List<Point<int>> getMidpoints() {
-
-  // }
 }

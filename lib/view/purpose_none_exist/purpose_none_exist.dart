@@ -47,7 +47,7 @@ class PurposeNoneExist extends StatelessWidget {
                           child: SpotBox(
                             //name: mapState.elements[index].name,
                             // name: mapState.elements[state.filteredSpots[index].mapElementIndex].name,
-                            name: (mapState.elements[state.filteredSpots[index].mapElementIndex] as Room).roomType.name,
+                            name: (mapState.elements[state.filteredSpots[index].mapElementIndex] as Room).roomType.displayName,
                             imagePath: state.filteredSpots[index].imagePath,
                             subText: state.filteredSpots[index].subText,
                           ),

@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:fish_hackathon/const/styles.dart';
 import 'package:fish_hackathon/main.dart';
+import 'package:fish_hackathon/model/direction.dart';
 import 'package:fish_hackathon/view/navi_view.dart';
 import 'package:fish_hackathon/view_model/navi_view_model.dart';
 import 'package:fish_hackathon/view_model/purpose_exist_view_model.dart';
@@ -46,15 +47,15 @@ class PurposeExist extends StatelessWidget {
                               tileColor: Colors.grey[300],
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(15)),
-                              title: Text(element.roomType.name),
+                              title: Text(element.roomType.displayName),
                               onTap: () {
                                 ref
                                     .read(naviViewModelProvider.notifier)
                                     .setDestination(element.roomType);
                                 ref
                                     .read(naviViewModelProvider.notifier)
-                                    // .setMockBeaconData();
-                                    .setStartPoint(point: const Point<int>(5000, 3000));
+                                    .setMockBeaconData();
+                                    // .setCurrentLocation(point: const Point<int>(5000, 3000), direction: Direction.west);
                                 Routemaster.of(context).push('/navi');
                               },
                             ),
