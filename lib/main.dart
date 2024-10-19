@@ -2,6 +2,7 @@ import 'package:fish_hackathon/view/purpose_exist.dart';
 import 'package:fish_hackathon/view/purpose_none_exist/purpose_none_exist.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:routemaster/routemaster.dart';
 
 Future<void> main() async {
@@ -44,7 +45,7 @@ class MyApp extends StatelessWidget {
                   '/purpose_exist': (_) =>
                       const MaterialPage<void>(child: PurposeExist()),
                   '/purpose_none_exist': (_) =>
-                      const MaterialPage<void>(child: PurposeNoneExist()),
+                      MaterialPage<void>(child: PurposeNoneExist()),
                 },
               )),
       routeInformationParser: const RoutemasterParser(),
@@ -70,6 +71,17 @@ class MyHomePage extends StatefulWidget {
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
+PreferredSizeWidget MirasutaAppBar = 
+AppBar(
+        backgroundColor: Colors.white,
+        title: SvgPicture.asset(
+              'image/MIRASUTA_logo.svg',
+              width: 50,
+              height: 50,
+              ),
+        centerTitle: true,
+      );
+
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
 
@@ -92,7 +104,9 @@ class _MyHomePageState extends State<MyHomePage> {
     // The Flutter framework has been optimized to make rerunning build methods
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
+    const widget = Widget ;
     return Scaffold(
+      appBar: MirasutaAppBar,
       body: Center(
         child: Column(
           children: <Widget>[
@@ -107,7 +121,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 Routemaster.of(context).push('/purpose_none_exist');
               },
               child: const Text("目的地なし"),
-            )
+            ),
           ],
         ),
       ),
