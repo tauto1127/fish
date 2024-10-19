@@ -46,7 +46,7 @@ class MyApp extends StatelessWidget {
                   '/purpose_exist': (_) =>
                       const MaterialPage<void>(child: PurposeExist()),
                   '/purpose_none_exist': (_) =>
-                      MaterialPage<void>(child: PurposeNoneExist()),
+                      const MaterialPage<void>(child: PurposeNoneExist()),
                   '/navi': (_) =>
                       const MaterialPage<void>(child: NaviView())
                 },

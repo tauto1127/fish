@@ -33,4 +33,8 @@ class NaviView extends ConsumerWidget {
       )),
     );
   }
+
+  // List<Point> getMidpoints() {
+
+  // }
 }

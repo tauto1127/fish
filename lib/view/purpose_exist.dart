@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:fish_hackathon/const/styles.dart';
 import 'package:fish_hackathon/main.dart';
 import 'package:fish_hackathon/view/navi_view.dart';
@@ -45,14 +47,14 @@ class PurposeExist extends StatelessWidget {
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(15)),
                               title: Text(element.roomType.name),
-                              //subtitle: Text("(${element.x}, ${element.y})"),
                               onTap: () {
                                 ref
                                     .read(naviViewModelProvider.notifier)
                                     .setDestination(element.roomType);
                                 ref
                                     .read(naviViewModelProvider.notifier)
-                                    .setMockBeaconData();
+                                    // .setMockBeaconData();
+                                    .setCurrentPoint(point: const Point(5000, 3000));
                                 Routemaster.of(context).push('/navi');
                               },
                             ),
