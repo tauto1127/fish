@@ -1,3 +1,6 @@
+import 'dart:math' as math;
+import 'dart:math';
+
 import 'package:fish_hackathon/model/map_element_type.dart';
 import 'package:fish_hackathon/model/map_element.dart';
 import 'package:fish_hackathon/state/navi_view_state.dart';
@@ -11,6 +14,18 @@ class NaviViewModel extends _$NaviViewModel {
   @override
   NaviViewState build() {
     return const NaviViewState();
+  }
+
+  void setCurrentPoint({required Point point}) {
+    state = state.copyWith(currentPoint: point);
+  }
+
+  Future<void> setMockBeaconData() async {
+    var random = math.Random();
+    while (true) {
+      await Future.delayed(const Duration(seconds: 1));
+      setCurrentPoint(point: Point(random.nextInt(4000)+1000, random.nextInt(4000)+1000));
+    }
   }
 
   void setDestination(RoomType room) {

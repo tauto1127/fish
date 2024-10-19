@@ -22,7 +22,9 @@ class PurposeExist extends StatelessWidget {
               subtitle: Text("(${roomData.door.x}, ${roomData.door.y})"),
               onTap: () {
                 ref.read(naviViewModelProvider.notifier).setDestination(roomData.roomType);
+                  ref.read(naviViewModelProvider.notifier).setMockBeaconData();
                 Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+                  
                   return const NaviView();
                 }));
               },
