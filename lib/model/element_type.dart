@@ -1,4 +1,0 @@
-enum ElementType {
-  stairs,
-  room,
-}

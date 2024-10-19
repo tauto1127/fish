@@ -17,9 +17,11 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$MapElement {
   String get name => throw _privateConstructorUsedError;
-  int get x => throw _privateConstructorUsedError;
-  int get y => throw _privateConstructorUsedError;
-  ElementType get type => throw _privateConstructorUsedError;
+  Point<num> get pointSW => throw _privateConstructorUsedError;
+  Point<num> get pointSE => throw _privateConstructorUsedError;
+  Point<num> get pointNW => throw _privateConstructorUsedError;
+  Point<num> get pointNE => throw _privateConstructorUsedError;
+  MapElementType get type => throw _privateConstructorUsedError;
 
   /// Create a copy of MapElement
   /// with the given fields replaced by the non-null parameter values.
@@ -34,7 +36,13 @@ abstract class $MapElementCopyWith<$Res> {
           MapElement value, $Res Function(MapElement) then) =
       _$MapElementCopyWithImpl<$Res, MapElement>;
   @useResult
-  $Res call({String name, int x, int y, ElementType type});
+  $Res call(
+      {String name,
+      Point<num> pointSW,
+      Point<num> pointSE,
+      Point<num> pointNW,
+      Point<num> pointNE,
+      MapElementType type});
 }
 
 /// @nodoc
@@ -53,8 +61,10 @@ class _$MapElementCopyWithImpl<$Res, $Val extends MapElement>
   @override
   $Res call({
     Object? name = null,
-    Object? x = null,
-    Object? y = null,
+    Object? pointSW = null,
+    Object? pointSE = null,
+    Object? pointNW = null,
+    Object? pointNE = null,
     Object? type = null,
   }) {
     return _then(_value.copyWith(
@@ -62,18 +72,26 @@ class _$MapElementCopyWithImpl<$Res, $Val extends MapElement>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      x: null == x
-          ? _value.x
-          : x // ignore: cast_nullable_to_non_nullable
-              as int,
-      y: null == y
-          ? _value.y
-          : y // ignore: cast_nullable_to_non_nullable
-              as int,
+      pointSW: null == pointSW
+          ? _value.pointSW
+          : pointSW // ignore: cast_nullable_to_non_nullable
+              as Point<num>,
+      pointSE: null == pointSE
+          ? _value.pointSE
+          : pointSE // ignore: cast_nullable_to_non_nullable
+              as Point<num>,
+      pointNW: null == pointNW
+          ? _value.pointNW
+          : pointNW // ignore: cast_nullable_to_non_nullable
+              as Point<num>,
+      pointNE: null == pointNE
+          ? _value.pointNE
+          : pointNE // ignore: cast_nullable_to_non_nullable
+              as Point<num>,
       type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
-              as ElementType,
+              as MapElementType,
     ) as $Val);
   }
 }
@@ -86,7 +104,13 @@ abstract class _$$MapElementImplCopyWith<$Res>
       __$$MapElementImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String name, int x, int y, ElementType type});
+  $Res call(
+      {String name,
+      Point<num> pointSW,
+      Point<num> pointSE,
+      Point<num> pointNW,
+      Point<num> pointNE,
+      MapElementType type});
 }
 
 /// @nodoc
@@ -103,8 +127,10 @@ class __$$MapElementImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? name = null,
-    Object? x = null,
-    Object? y = null,
+    Object? pointSW = null,
+    Object? pointSE = null,
+    Object? pointNW = null,
+    Object? pointNE = null,
     Object? type = null,
   }) {
     return _then(_$MapElementImpl(
@@ -112,18 +138,26 @@ class __$$MapElementImplCopyWithImpl<$Res>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      x: null == x
-          ? _value.x
-          : x // ignore: cast_nullable_to_non_nullable
-              as int,
-      y: null == y
-          ? _value.y
-          : y // ignore: cast_nullable_to_non_nullable
-              as int,
+      pointSW: null == pointSW
+          ? _value.pointSW
+          : pointSW // ignore: cast_nullable_to_non_nullable
+              as Point<num>,
+      pointSE: null == pointSE
+          ? _value.pointSE
+          : pointSE // ignore: cast_nullable_to_non_nullable
+              as Point<num>,
+      pointNW: null == pointNW
+          ? _value.pointNW
+          : pointNW // ignore: cast_nullable_to_non_nullable
+              as Point<num>,
+      pointNE: null == pointNE
+          ? _value.pointNE
+          : pointNE // ignore: cast_nullable_to_non_nullable
+              as Point<num>,
       type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
-              as ElementType,
+              as MapElementType,
     ));
   }
 }
@@ -133,22 +167,28 @@ class __$$MapElementImplCopyWithImpl<$Res>
 class _$MapElementImpl implements _MapElement {
   const _$MapElementImpl(
       {required this.name,
-      required this.x,
-      required this.y,
+      required this.pointSW,
+      required this.pointSE,
+      required this.pointNW,
+      required this.pointNE,
       required this.type});
 
   @override
   final String name;
   @override
-  final int x;
+  final Point<num> pointSW;
   @override
-  final int y;
+  final Point<num> pointSE;
   @override
-  final ElementType type;
+  final Point<num> pointNW;
+  @override
+  final Point<num> pointNE;
+  @override
+  final MapElementType type;
 
   @override
   String toString() {
-    return 'MapElement(name: $name, x: $x, y: $y, type: $type)';
+    return 'MapElement(name: $name, pointSW: $pointSW, pointSE: $pointSE, pointNW: $pointNW, pointNE: $pointNE, type: $type)';
   }
 
   @override
@@ -157,13 +197,16 @@ class _$MapElementImpl implements _MapElement {
         (other.runtimeType == runtimeType &&
             other is _$MapElementImpl &&
             (identical(other.name, name) || other.name == name) &&
-            (identical(other.x, x) || other.x == x) &&
-            (identical(other.y, y) || other.y == y) &&
+            (identical(other.pointSW, pointSW) || other.pointSW == pointSW) &&
+            (identical(other.pointSE, pointSE) || other.pointSE == pointSE) &&
+            (identical(other.pointNW, pointNW) || other.pointNW == pointNW) &&
+            (identical(other.pointNE, pointNE) || other.pointNE == pointNE) &&
             (identical(other.type, type) || other.type == type));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, name, x, y, type);
+  int get hashCode =>
+      Object.hash(runtimeType, name, pointSW, pointSE, pointNW, pointNE, type);
 
   /// Create a copy of MapElement
   /// with the given fields replaced by the non-null parameter values.
@@ -177,18 +220,24 @@ class _$MapElementImpl implements _MapElement {
 abstract class _MapElement implements MapElement {
   const factory _MapElement(
       {required final String name,
-      required final int x,
-      required final int y,
-      required final ElementType type}) = _$MapElementImpl;
+      required final Point<num> pointSW,
+      required final Point<num> pointSE,
+      required final Point<num> pointNW,
+      required final Point<num> pointNE,
+      required final MapElementType type}) = _$MapElementImpl;
 
   @override
   String get name;
   @override
-  int get x;
+  Point<num> get pointSW;
   @override
-  int get y;
+  Point<num> get pointSE;
   @override
-  ElementType get type;
+  Point<num> get pointNW;
+  @override
+  Point<num> get pointNE;
+  @override
+  MapElementType get type;
 
   /// Create a copy of MapElement
   /// with the given fields replaced by the non-null parameter values.
