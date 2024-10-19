@@ -48,6 +48,7 @@ class MapModel {
 
   Point<int> getNextMidpoint(
       {required Point<int> currentPoint, required Point<int> destination}) {
+        late int returnXCandidate, returnYCandidate;
     switch (getDirectionOfMovement(
         currentPoint: currentPoint, destination: destination)) {
       case Direction.north:
@@ -58,7 +59,9 @@ class MapModel {
                   start: wall.point.x,
                   end: wall.end.x)) {
             print("a");
-            return Point(currentPoint.x, wall.point.y - movementPadding);
+            returnXCandidate = currentPoint.x;
+            returnYCandidate = wall.point.y - movementPadding;
+            return _getReturnPoint(destination, returnXCandidate, returnYCandidate);
           }
         }
         break;
@@ -70,7 +73,9 @@ class MapModel {
                   start: wall.point.x,
                   end: wall.end.x)) {
             print("b");
-            return Point(currentPoint.x, wall.point.y + movementPadding);
+            returnXCandidate = currentPoint.x;
+            returnYCandidate = wall.point.y + movementPadding;
+            return _getReturnPoint(destination, returnXCandidate, returnYCandidate);
           }
         }
         break;
@@ -82,7 +87,9 @@ class MapModel {
                   start: wall.point.y,
                   end: wall.end.y)) {
             print("c");
-            return Point(wall.point.x - movementPadding, currentPoint.y);
+            returnXCandidate = wall.point.x - movementPadding;
+            returnYCandidate = currentPoint.y;
+            return _getReturnPoint(destination, returnXCandidate, returnYCandidate);
           }
         }
         break;
@@ -94,7 +101,9 @@ class MapModel {
                   start: wall.point.y,
                   end: wall.end.y)) {
             print("d");
-            return Point(wall.point.x + movementPadding, currentPoint.y);
+            returnXCandidate = wall.point.x + movementPadding;
+            returnYCandidate = currentPoint.y;
+            return _getReturnPoint(destination, returnXCandidate, returnYCandidate);
           }
         }
         if (destination.x <= currentPoint.x) {
@@ -105,12 +114,16 @@ class MapModel {
                       value: currentPoint.y,
                       start: wall.point.y,
                       end: wall.end.y)) {
-                print("d");
-                return Point(-1, -1);
+                print("e");
+                returnXCandidate = -1;
+                returnYCandidate = -1;
+                return _getReturnPoint(destination, returnXCandidate, returnYCandidate);
               }
             }
-            print("e");
-            return Point(destination.x, currentPoint.y);
+            print("f");
+            returnXCandidate = destination.x;
+            returnYCandidate = currentPoint.y;
+            return _getReturnPoint(destination, returnXCandidate, returnYCandidate);
           } else {
             for (Wall wall in eastWestWalls.reversed) {
               if (currentPoint.y <= wall.point.y - movementPadding &&
@@ -118,21 +131,37 @@ class MapModel {
                       value: currentPoint.y,
                       start: wall.point.y,
                       end: wall.end.y)) {
-                        print("f");
-                        return Point(-1, -1);
+                        print("g");
+                        returnXCandidate = -1;
+                        returnYCandidate = -1;
+                        return _getReturnPoint(destination, returnXCandidate, returnYCandidate);
                       }
             }
-            print("g");
-            return Point(destination.x, currentPoint.y);
+            print("h");
+            returnXCandidate = destination.x;
+            returnYCandidate = currentPoint.y;
+            return _getReturnPoint(destination, returnXCandidate, returnYCandidate);
           }
         }
         break;
       default:
-        print("h");
-        return const Point(-1, -1);
+        print("i");
+        returnXCandidate = -1;
+        returnYCandidate = -1;
+        return _getReturnPoint(destination, returnXCandidate, returnYCandidate);
     }
     print("j");
-    return const Point(-1, -1);
+    returnXCandidate = -1;
+    returnYCandidate = -1;
+    return _getReturnPoint(destination, returnXCandidate, returnYCandidate);
+  }
+
+  Point<int> _getReturnPoint(Point<int> destination, int x, int y) {
+    if ((destination.x-x).abs() <= movementPadding && (destination.y-y).abs() <= movementPadding) {
+      return destination;
+    } else {
+      return Point(x, y);
+    }
   }
 
   bool _isWithinRange(
