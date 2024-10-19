@@ -30,7 +30,6 @@ class RecommendSpotViewModel extends _$RecommendSpotViewModel {
         }
       }
       return false;
-
     }).toList();
     state = state.copyWith(filteredSpots: filteredSpots);
   }

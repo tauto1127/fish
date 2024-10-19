@@ -1,3 +1,4 @@
+import 'package:fish_hackathon/const/styles.dart';
 import 'package:fish_hackathon/main.dart';
 import 'package:fish_hackathon/model/map_element.dart';
 import 'package:fish_hackathon/view/purpose_none_exist/spot_box.dart';
@@ -21,11 +22,7 @@ class PurposeNoneExist extends StatelessWidget {
                 return Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: TextFormField(
-                    decoration: const InputDecoration(
-                      prefixIcon: Icon(Icons.search),
-                      hintText: "Search",
-                      border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(15))),
-                    ),
+                    decoration: MirasutaTextFormFieldDecoration,
                     onChanged: (value) {
                       ref.read(recommendSpotViewModelProvider.notifier).filter(value);
                     },
