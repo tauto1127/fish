@@ -23,7 +23,14 @@ class NaviViewModel extends _$NaviViewModel {
     state = state.copyWith(floorName: floorName, currentPoint: point, currentDirection: direction);
   }
 
-  Future<void> setMockBeaconData() async {
+  Future<void> setMockMovedToNextMidpointLocation({required Point<int> point, required Direction direction}) async {
+    print("setNext called");
+    await Future.delayed(const Duration(seconds: 5));
+    print("5 seconds finished");
+    setCurrentLocation(floorName: FloorName.third, point: point, direction: direction);
+  }
+
+  Future<void> setMockStartLocation() async {
     var random = math.Random();
     while (true) {
       setCurrentLocation(floorName: FloorName.third, point: const Point<int>(5000, 3000), direction: Direction.west);

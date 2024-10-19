@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:fish_hackathon/model/map_element.dart';
+import 'package:fish_hackathon/model/map_model.dart';
 import 'package:fish_hackathon/view_model/map_view_model.dart';
 import 'package:fish_hackathon/view_model/navi_view_model.dart';
 import 'package:flutter/material.dart';
@@ -26,6 +27,9 @@ class NaviView extends ConsumerWidget {
 
               //debugPrint(((currentLocation.x - nextMidpoint.x).abs() + (currentLocation.y - nextMidpoint.y).abs()) as String?);
 
+              if (nextMidpoint.x != destinationPoint.x || nextMidpoint.y != destinationPoint.y) {
+                ref.read(naviViewModelProvider.notifier).setMockMovedToNextMidpointLocation(point: nextMidpoint, direction: direction);
+              }
               if (currentPoint == null) {
                 return SizedBox.shrink();
               }
