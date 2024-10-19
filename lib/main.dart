@@ -1,5 +1,5 @@
 import 'package:fish_hackathon/view/purpose_exist.dart';
-import 'package:fish_hackathon/view/purpose_nonexist.dart';
+import 'package:fish_hackathon/view/purpose_none_exist/purpose_none_exist.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -98,7 +98,7 @@ class _MyHomePageState extends State<MyHomePage> {
               onPressed: () {
                 Navigator.of(context)
                     .push(MaterialPageRoute<void>(builder: (context) {
-                  return PurposeNonexist();
+                  return PurposeNoneExist();
                 }));
               },
               child: const Text("目的地なし"),
