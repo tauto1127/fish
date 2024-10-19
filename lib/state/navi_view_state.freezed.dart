@@ -16,8 +16,8 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$NaviViewState {
-  Point<num>? get startPoint => throw _privateConstructorUsedError;
-  Point<num>? get currentPoint => throw _privateConstructorUsedError;
+  Point<int>? get startPoint => throw _privateConstructorUsedError;
+  Point<int>? get currentPoint => throw _privateConstructorUsedError;
   RoomType? get destinationRoom => throw _privateConstructorUsedError;
 
   /// Create a copy of NaviViewState
@@ -34,8 +34,8 @@ abstract class $NaviViewStateCopyWith<$Res> {
       _$NaviViewStateCopyWithImpl<$Res, NaviViewState>;
   @useResult
   $Res call(
-      {Point<num>? startPoint,
-      Point<num>? currentPoint,
+      {Point<int>? startPoint,
+      Point<int>? currentPoint,
       RoomType? destinationRoom});
 }
 
@@ -62,11 +62,11 @@ class _$NaviViewStateCopyWithImpl<$Res, $Val extends NaviViewState>
       startPoint: freezed == startPoint
           ? _value.startPoint
           : startPoint // ignore: cast_nullable_to_non_nullable
-              as Point<num>?,
+              as Point<int>?,
       currentPoint: freezed == currentPoint
           ? _value.currentPoint
           : currentPoint // ignore: cast_nullable_to_non_nullable
-              as Point<num>?,
+              as Point<int>?,
       destinationRoom: freezed == destinationRoom
           ? _value.destinationRoom
           : destinationRoom // ignore: cast_nullable_to_non_nullable
@@ -84,8 +84,8 @@ abstract class _$$NaviViewStateImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {Point<num>? startPoint,
-      Point<num>? currentPoint,
+      {Point<int>? startPoint,
+      Point<int>? currentPoint,
       RoomType? destinationRoom});
 }
 
@@ -110,11 +110,11 @@ class __$$NaviViewStateImplCopyWithImpl<$Res>
       startPoint: freezed == startPoint
           ? _value.startPoint
           : startPoint // ignore: cast_nullable_to_non_nullable
-              as Point<num>?,
+              as Point<int>?,
       currentPoint: freezed == currentPoint
           ? _value.currentPoint
           : currentPoint // ignore: cast_nullable_to_non_nullable
-              as Point<num>?,
+              as Point<int>?,
       destinationRoom: freezed == destinationRoom
           ? _value.destinationRoom
           : destinationRoom // ignore: cast_nullable_to_non_nullable
@@ -130,9 +130,9 @@ class _$NaviViewStateImpl implements _NaviViewState {
       {this.startPoint, this.currentPoint, this.destinationRoom});
 
   @override
-  final Point<num>? startPoint;
+  final Point<int>? startPoint;
   @override
-  final Point<num>? currentPoint;
+  final Point<int>? currentPoint;
   @override
   final RoomType? destinationRoom;
 
@@ -169,14 +169,14 @@ class _$NaviViewStateImpl implements _NaviViewState {
 
 abstract class _NaviViewState implements NaviViewState {
   const factory _NaviViewState(
-      {final Point<num>? startPoint,
-      final Point<num>? currentPoint,
+      {final Point<int>? startPoint,
+      final Point<int>? currentPoint,
       final RoomType? destinationRoom}) = _$NaviViewStateImpl;
 
   @override
-  Point<num>? get startPoint;
+  Point<int>? get startPoint;
   @override
-  Point<num>? get currentPoint;
+  Point<int>? get currentPoint;
   @override
   RoomType? get destinationRoom;
 

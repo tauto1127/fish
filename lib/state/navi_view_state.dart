@@ -8,8 +8,8 @@ part 'navi_view_state.freezed.dart';
 @freezed
 class NaviViewState with _$NaviViewState {
   const factory NaviViewState({
-    Point? startPoint,
-    Point? currentPoint,
+    Point<int>? startPoint,
+    Point<int>? currentPoint,
     RoomType? destinationRoom,
   }) = _NaviViewState;
 }

@@ -6,7 +6,7 @@ part of 'navi_view_model.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$naviViewModelHash() => r'0c6db7b8475396fc879f101c80b60faef5faa5fa';
+String _$naviViewModelHash() => r'eb5f9bff9217b9a9be004d1b1a728387e862a749';
 
 /// See also [NaviViewModel].
 @ProviderFor(NaviViewModel)

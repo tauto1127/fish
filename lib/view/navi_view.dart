@@ -19,7 +19,7 @@ class NaviView extends ConsumerWidget {
           final naviState = ref.watch(naviViewModelProvider);
           final currentPoint = naviState.currentPoint;
           final destination = naviState.destinationRoom;
-          late Point destinationPoint;
+          late Point<int> destinationPoint;
           for (MapElement element in mapState.elements) {
             if (element is Room) {
               final Room roomData = element;
@@ -34,7 +34,7 @@ class NaviView extends ConsumerWidget {
     );
   }
 
-  // List<Point> getMidpoints() {
+  // List<Point<int>> getMidpoints() {
 
   // }
 }

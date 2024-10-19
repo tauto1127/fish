@@ -16,7 +16,14 @@ class NaviViewModel extends _$NaviViewModel {
     return const NaviViewState();
   }
 
-  void setCurrentPoint({required Point point}) {
+  void setStartPoint({required Point<int> point}) {
+    state = state.copyWith(
+      startPoint: point,
+      currentPoint: point
+    );
+  }
+
+  void setCurrentPoint({required Point<int> point}) {
     state = state.copyWith(currentPoint: point);
   }
 
@@ -24,7 +31,7 @@ class NaviViewModel extends _$NaviViewModel {
     var random = math.Random();
     while (true) {
       await Future.delayed(const Duration(seconds: 1));
-      setCurrentPoint(point: Point(random.nextInt(4000)+1000, random.nextInt(4000)+1000));
+      setCurrentPoint(point: Point<int>(random.nextInt(4000)+1000, random.nextInt(4000)+1000));
     }
   }
 

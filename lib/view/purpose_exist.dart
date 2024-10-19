@@ -54,7 +54,7 @@ class PurposeExist extends StatelessWidget {
                                 ref
                                     .read(naviViewModelProvider.notifier)
                                     // .setMockBeaconData();
-                                    .setCurrentPoint(point: const Point(5000, 3000));
+                                    .setStartPoint(point: const Point<int>(5000, 3000));
                                 Routemaster.of(context).push('/navi');
                               },
                             ),

@@ -19,7 +19,7 @@ abstract class MapElement {
   const MapElement({
     required this.point,
   });
-  final Point point;
+  final Point<int> point;
 }
 
 class Floor extends MapElement {
@@ -31,7 +31,7 @@ class Floor extends MapElement {
 
 class Wall extends MapElement {
   const Wall({required super.point, required this.end});
-  final Point end;
+  final Point<int> end;
 }
 
 class Beacon extends MapElement {
@@ -50,6 +50,6 @@ class Room extends MapElement {
   final int width;
   final int height;
   final RoomType roomType;
-  final Point door;
-  Point getDoor() => door;
+  final Point<int> door;
+  Point<int> getDoor() => door;
 }

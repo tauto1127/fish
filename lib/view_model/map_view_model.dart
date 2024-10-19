@@ -14,11 +14,12 @@ class MapViewModel extends _$MapViewModel {
   MapModel build() {
     return MapModel(
       elements: const [
-        Wall(point: Point(0, 4000), end: Point(6000, 4000)),
-        Floor(point: Point(0, 2000), width: 6000, height: 2000),
-        Room(point: Point(0, 0), width: 2000, height: 2000, roomType: RoomType.computer363, door: Point(1000, 2000)),
-        Room(point: Point(2000, 0), width: 2000, height: 2000, roomType: RoomType.computer364, door: Point(1000, 2000)),
-        Room(point: Point(4000, 0), width: 2000, height: 2000, roomType: RoomType.computer365, door: Point(1000, 2000))
+        Wall(point: Point<int>(0, 4000), end: Point<int>(6000, 4000)),
+        Floor(point: Point<int>(0, 2000), width: 6000, height: 2000),
+        Wall(point: Point<int>(0, 2000), end: Point<int>(6000, 2000)),
+        Room(point: Point<int>(0, 0), width: 2000, height: 2000, roomType: RoomType.computer363, door: Point<int>(1000, 2000)),
+        Room(point: Point<int>(2000, 0), width: 2000, height: 2000, roomType: RoomType.computer364, door: Point<int>(1000, 2000)),
+        Room(point: Point<int>(4000, 0), width: 2000, height: 2000, roomType: RoomType.computer365, door: Point<int>(1000, 2000))
       ],
     );
   }
