@@ -58,7 +58,6 @@ class MapModel {
                   value: currentPoint.x,
                   start: wall.point.x,
                   end: wall.end.x)) {
-            print("a");
             returnXCandidate = currentPoint.x;
             returnYCandidate = wall.point.y - movementPadding;
             return _getReturnPoint(destination, returnXCandidate, returnYCandidate);
@@ -72,7 +71,6 @@ class MapModel {
                   value: currentPoint.x,
                   start: wall.point.x,
                   end: wall.end.x)) {
-            print("b");
             returnXCandidate = currentPoint.x;
             returnYCandidate = wall.point.y + movementPadding;
             return _getReturnPoint(destination, returnXCandidate, returnYCandidate);
@@ -86,7 +84,6 @@ class MapModel {
                   value: currentPoint.y,
                   start: wall.point.y,
                   end: wall.end.y)) {
-            print("c");
             returnXCandidate = wall.point.x - movementPadding;
             returnYCandidate = currentPoint.y;
             return _getReturnPoint(destination, returnXCandidate, returnYCandidate);
@@ -100,7 +97,6 @@ class MapModel {
                   value: currentPoint.y,
                   start: wall.point.y,
                   end: wall.end.y)) {
-            print("d");
             returnXCandidate = wall.point.x + movementPadding;
             returnYCandidate = currentPoint.y;
             return _getReturnPoint(destination, returnXCandidate, returnYCandidate);
@@ -114,13 +110,11 @@ class MapModel {
                       value: currentPoint.y,
                       start: wall.point.y,
                       end: wall.end.y)) {
-                print("e");
                 returnXCandidate = -1;
                 returnYCandidate = -1;
                 return _getReturnPoint(destination, returnXCandidate, returnYCandidate);
               }
             }
-            print("f");
             returnXCandidate = destination.x;
             returnYCandidate = currentPoint.y;
             return _getReturnPoint(destination, returnXCandidate, returnYCandidate);
@@ -131,13 +125,11 @@ class MapModel {
                       value: currentPoint.y,
                       start: wall.point.y,
                       end: wall.end.y)) {
-                        print("g");
                         returnXCandidate = -1;
                         returnYCandidate = -1;
                         return _getReturnPoint(destination, returnXCandidate, returnYCandidate);
                       }
             }
-            print("h");
             returnXCandidate = destination.x;
             returnYCandidate = currentPoint.y;
             return _getReturnPoint(destination, returnXCandidate, returnYCandidate);
@@ -145,12 +137,10 @@ class MapModel {
         }
         break;
       default:
-        print("i");
         returnXCandidate = -1;
         returnYCandidate = -1;
         return _getReturnPoint(destination, returnXCandidate, returnYCandidate);
     }
-    print("j");
     returnXCandidate = -1;
     returnYCandidate = -1;
     return _getReturnPoint(destination, returnXCandidate, returnYCandidate);
