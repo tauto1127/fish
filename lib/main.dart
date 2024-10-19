@@ -1,3 +1,4 @@
+import 'package:fish_hackathon/view/navi_view.dart';
 import 'package:fish_hackathon/view/purpose_exist.dart';
 import 'package:fish_hackathon/view/purpose_none_exist/purpose_none_exist.dart';
 import 'package:flutter/material.dart';
@@ -44,7 +45,9 @@ class MyApp extends StatelessWidget {
                   '/purpose_exist': (_) =>
                       const MaterialPage<void>(child: PurposeExist()),
                   '/purpose_none_exist': (_) =>
-                      const MaterialPage<void>(child: PurposeNoneExist()),
+                      MaterialPage<void>(child: PurposeNoneExist()),
+                  '/navi': (_) =>
+                      const MaterialPage<void>(child: NaviView())
                 },
               )),
       routeInformationParser: const RoutemasterParser(),
