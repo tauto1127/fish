@@ -1,3 +1,6 @@
+import 'dart:math';
+
+import 'package:fish_hackathon/model/map_element.dart';
 import 'package:fish_hackathon/view_model/map_view_model.dart';
 import 'package:fish_hackathon/view_model/navi_view_model.dart';
 import 'package:flutter/material.dart';
@@ -13,8 +16,16 @@ class NaviView extends StatelessWidget {
         builder: (context, ref, child) {
           final mapState = ref.watch(mapViewModelProvider);
           final naviState = ref.watch(naviViewModelProvider);
-          final destination = mapState.elements[naviState.destinationIndex];
-          return Text("目的: ${destination.name}, (${destination.x}, ${destination.y})");
+          final destination = naviState.destinationRoom;
+          late Point destinationPoint;
+          for (MapElement element in mapState.elements) {
+            if (element is Room) {
+              final Room roomData = element;
+              destinationPoint = roomData.door;
+            }
+          }
+          return Text(
+              "目的地: ${roomNameDict[destination]}, (${destinationPoint.x}, ${destinationPoint.y})");
         },
       )),
     );

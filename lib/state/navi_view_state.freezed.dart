@@ -16,7 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$NaviViewState {
-  int get destinationIndex => throw _privateConstructorUsedError;
+  RoomType? get destinationRoom => throw _privateConstructorUsedError;
 
   /// Create a copy of NaviViewState
   /// with the given fields replaced by the non-null parameter values.
@@ -31,7 +31,7 @@ abstract class $NaviViewStateCopyWith<$Res> {
           NaviViewState value, $Res Function(NaviViewState) then) =
       _$NaviViewStateCopyWithImpl<$Res, NaviViewState>;
   @useResult
-  $Res call({int destinationIndex});
+  $Res call({RoomType? destinationRoom});
 }
 
 /// @nodoc
@@ -49,13 +49,13 @@ class _$NaviViewStateCopyWithImpl<$Res, $Val extends NaviViewState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? destinationIndex = null,
+    Object? destinationRoom = freezed,
   }) {
     return _then(_value.copyWith(
-      destinationIndex: null == destinationIndex
-          ? _value.destinationIndex
-          : destinationIndex // ignore: cast_nullable_to_non_nullable
-              as int,
+      destinationRoom: freezed == destinationRoom
+          ? _value.destinationRoom
+          : destinationRoom // ignore: cast_nullable_to_non_nullable
+              as RoomType?,
     ) as $Val);
   }
 }
@@ -68,7 +68,7 @@ abstract class _$$NaviViewStateImplCopyWith<$Res>
       __$$NaviViewStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int destinationIndex});
+  $Res call({RoomType? destinationRoom});
 }
 
 /// @nodoc
@@ -84,13 +84,13 @@ class __$$NaviViewStateImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? destinationIndex = null,
+    Object? destinationRoom = freezed,
   }) {
     return _then(_$NaviViewStateImpl(
-      destinationIndex: null == destinationIndex
-          ? _value.destinationIndex
-          : destinationIndex // ignore: cast_nullable_to_non_nullable
-              as int,
+      destinationRoom: freezed == destinationRoom
+          ? _value.destinationRoom
+          : destinationRoom // ignore: cast_nullable_to_non_nullable
+              as RoomType?,
     ));
   }
 }
@@ -98,15 +98,14 @@ class __$$NaviViewStateImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$NaviViewStateImpl implements _NaviViewState {
-  const _$NaviViewStateImpl({this.destinationIndex = 0});
+  const _$NaviViewStateImpl({this.destinationRoom});
 
   @override
-  @JsonKey()
-  final int destinationIndex;
+  final RoomType? destinationRoom;
 
   @override
   String toString() {
-    return 'NaviViewState(destinationIndex: $destinationIndex)';
+    return 'NaviViewState(destinationRoom: $destinationRoom)';
   }
 
   @override
@@ -114,12 +113,12 @@ class _$NaviViewStateImpl implements _NaviViewState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$NaviViewStateImpl &&
-            (identical(other.destinationIndex, destinationIndex) ||
-                other.destinationIndex == destinationIndex));
+            (identical(other.destinationRoom, destinationRoom) ||
+                other.destinationRoom == destinationRoom));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, destinationIndex);
+  int get hashCode => Object.hash(runtimeType, destinationRoom);
 
   /// Create a copy of NaviViewState
   /// with the given fields replaced by the non-null parameter values.
@@ -131,11 +130,11 @@ class _$NaviViewStateImpl implements _NaviViewState {
 }
 
 abstract class _NaviViewState implements NaviViewState {
-  const factory _NaviViewState({final int destinationIndex}) =
+  const factory _NaviViewState({final RoomType? destinationRoom}) =
       _$NaviViewStateImpl;
 
   @override
-  int get destinationIndex;
+  RoomType? get destinationRoom;
 
   /// Create a copy of NaviViewState
   /// with the given fields replaced by the non-null parameter values.

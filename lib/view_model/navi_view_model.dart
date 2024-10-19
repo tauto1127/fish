@@ -1,4 +1,4 @@
-import 'package:fish_hackathon/model/element_type.dart';
+import 'package:fish_hackathon/model/map_element_type.dart';
 import 'package:fish_hackathon/model/map_element.dart';
 import 'package:fish_hackathon/state/navi_view_state.dart';
 import 'package:fish_hackathon/view_model/map_view_model.dart';
@@ -13,7 +13,7 @@ class NaviViewModel extends _$NaviViewModel {
     return const NaviViewState();
   }
 
-  void setDestination(int index) {
-    state = state.copyWith(destinationIndex: index);
+  void setDestination(RoomType room) {
+    state = state.copyWith(destinationRoom: room);
   }
 }

@@ -1,4 +1,5 @@
 import 'package:fish_hackathon/main.dart';
+import 'package:fish_hackathon/model/map_element.dart';
 import 'package:fish_hackathon/view/purpose_none_exist/spot_box.dart';
 import 'package:fish_hackathon/view_model/map_view_model.dart';
 import 'package:fish_hackathon/view_model/recommend_spot_view_model.dart';
@@ -48,7 +49,8 @@ class PurposeNoneExist extends StatelessWidget {
                           padding: const EdgeInsets.only(bottom: 20),
                           child: SpotBox(
                             //name: mapState.elements[index].name,
-                            name: mapState.elements[state.filteredSpots[index].mapElementIndex].name,
+                            // name: mapState.elements[state.filteredSpots[index].mapElementIndex].name,
+                            name: roomNameDict[(mapState.elements[state.filteredSpots[index].mapElementIndex] as Room).room]!,
                             imagePath: state.filteredSpots[index].imagePath,
                             subText: state.filteredSpots[index].subText,
                           ),

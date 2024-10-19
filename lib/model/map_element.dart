@@ -1,14 +1,55 @@
-import 'package:fish_hackathon/model/element_type.dart';
+import 'dart:math';
+
+import 'package:fish_hackathon/model/map_element_type.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'map_element.freezed.dart';
+//TODO: タイプによって必要引数を変える
 
-@freezed
-class MapElement with _$MapElement {
-  const factory MapElement({
-    required String name,
-    required int x,
-    required int y,
-    required ElementType type,
-  }) = _MapElement;
+enum BeaconType { A, B, C }
+
+enum RoomType { Computer363, Computer364, Computer365 }
+
+Map<RoomType, String> roomNameDict = {
+  RoomType.Computer363: "363",
+  RoomType.Computer364: "364",
+  RoomType.Computer365: "365",
+};
+
+abstract class MapElement {
+  const MapElement({
+    required this.point,
+  });
+  final Point point;
+}
+
+class Floor extends MapElement {
+  const Floor(
+      {required super.point, required this.width, required this.height});
+  final int width;
+  final int height;
+}
+
+class Wall extends MapElement {
+  const Wall({required super.point, required this.end});
+  final Point end;
+}
+
+class Beacon extends MapElement {
+  const Beacon({required super.point, required this.beacon});
+  final BeaconType beacon;
+}
+
+class Room extends MapElement {
+  const Room({
+    required super.point,
+    required this.width,
+    required this.height,
+    required this.room,
+    required this.door,
+  });
+  final int width;
+  final int height;
+  final RoomType room;
+  final Point door;
+  Point getDoor() => door;
 }

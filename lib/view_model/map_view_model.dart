@@ -1,6 +1,9 @@
-import 'package:fish_hackathon/model/element_type.dart';
+import 'dart:math';
+
+import 'package:fish_hackathon/model/map_element_type.dart';
 import 'package:fish_hackathon/state/map_view_state.dart';
 import 'package:fish_hackathon/model/map_element.dart';
+import 'package:flutter/material.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'map_view_model.g.dart';
@@ -11,9 +14,11 @@ class MapViewModel extends _$MapViewModel {
   MapViewState build() {
     return const MapViewState(
       elements: [
-        MapElement(name: "工房", x: 0, y: 0, type: ElementType.room),
-        MapElement(name: "365", x: 10, y: 10, type: ElementType.room),
-        MapElement(name: "階段", x: 10, y: 10, type: ElementType.stairs),
+        Wall(point: Point(0, 4000), end: Point(6000, 4000)),
+        Floor(point: Point(0, 2000), width: 6000, height: 2000),
+        Room(point: Point(0, 0), width: 2000, height: 2000, room: RoomType.Computer363, door: Point(1000, 2000)),
+        Room(point: Point(2000, 0), width: 2000, height: 2000, room: RoomType.Computer364, door: Point(1000, 2000)),
+        Room(point: Point(4000, 0), width: 2000, height: 2000, room: RoomType.Computer365, door: Point(1000, 2000))
       ],
     );
   }

@@ -6,6 +6,6 @@ part 'navi_view_state.freezed.dart';
 @freezed
 class NaviViewState with _$NaviViewState {
   const factory NaviViewState({
-    @Default(0) int destinationIndex,
+    RoomType? destinationRoom,
   }) = _NaviViewState;
 }
