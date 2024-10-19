@@ -21,8 +21,9 @@ class PurposeExist extends StatelessWidget {
               subtitle: Text("(${element.x}, ${element.y})"),
               onTap: () {
                 ref.read(naviViewModelProvider.notifier).setDestination(index);
-                Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-                  return NaviView();
+                Navigator.of(context)
+                    .push(MaterialPageRoute(builder: (context) {
+                  return const NaviView();
                 }));
               },
             );
