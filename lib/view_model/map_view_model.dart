@@ -15,12 +15,12 @@ class MapViewModel extends _$MapViewModel {
     return MapModel(
       floorName: FloorName.third,
       elements: [
-        const Wall(point: Point<int>(0, 4000), end: Point<int>(6000, 4000)),
-        const Floor(point: Point<int>(0, 2000), width: 6000, height: 2000),
-        const Wall(point: Point<int>(0, 2000), end: Point<int>(6000, 2000)),
-        Room(point: const Point<int>(0, 0), width: 2000, height: 2000, roomType: RoomType.computer365, doorOffset: const Point<int>(1000, 2000)),
-        Room(point: const Point<int>(2000, 0), width: 2000, height: 2000, roomType: RoomType.computer364, doorOffset: const Point<int>(1000, 2000)),
-        Room(point: const Point<int>(4000, 0), width: 2000, height: 2000, roomType: RoomType.computer363, doorOffset: const Point<int>(1000, 2000))
+        const Wall(point: Point<int>(0, 4000), end: Point<int>(6000, 4000), floorNum: 3),
+        const Floor(point: Point<int>(0, 2000), width: 6000, height: 2000, floorNum: 3),
+        const Wall(point: Point<int>(0, 2000), end: Point<int>(6000, 2000), floorNum: 3),
+        Room(point: const Point<int>(0, 0), width: 2000, height: 2000, roomType: RoomType.computer365, doorOffset: const Point<int>(1000, 2000), floorNum: 3),
+        Room(point: const Point<int>(2000, 0), width: 2000, height: 2000, roomType: RoomType.computer364, doorOffset: const Point<int>(1000, 2000), floorNum: 3),
+        Room(point: const Point<int>(4000, 0), width: 2000, height: 2000, roomType: RoomType.computer363, doorOffset: const Point<int>(1000, 2000), floorNum: 3)
       ],
     );
   }

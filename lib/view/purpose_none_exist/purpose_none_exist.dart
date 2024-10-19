@@ -24,7 +24,9 @@ class PurposeNoneExist extends StatelessWidget {
                   child: TextFormField(
                     decoration: MirasutaTextFormFieldDecoration,
                     onChanged: (value) {
-                      ref.read(recommendSpotViewModelProvider.notifier).filter(value);
+                      ref
+                          .read(recommendSpotViewModelProvider.notifier)
+                          .filter(value);
                     },
                   ),
                 );

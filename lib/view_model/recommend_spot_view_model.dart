@@ -9,8 +9,8 @@ part 'recommend_spot_view_model.g.dart';
 @Riverpod(keepAlive: true)
 class RecommendSpotViewModel extends _$RecommendSpotViewModel {
   final spots = [
-    const RecommendSpotModel(mapElementIndex: 2, imagePath: "assets/image/squid.jpg", subText: "11:30~13:00"),
-    const RecommendSpotModel(mapElementIndex: 3, imagePath: "assets/image/map.webp")
+    const RecommendSpotModel(mapElementIndex: 3, imagePath: "assets/image/squid.jpg", subText: "11:30~13:00"),
+    const RecommendSpotModel(mapElementIndex: 4, imagePath: "assets/image/map.webp")
   ];
   @override
   RecommendViewState build() {

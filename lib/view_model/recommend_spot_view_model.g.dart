@@ -7,7 +7,7 @@ part of 'recommend_spot_view_model.dart';
 // **************************************************************************
 
 String _$recommendSpotViewModelHash() =>
-    r'9b06203c62322da86331dbd9e88bdde8604d8c82';
+    r'efe5ee8ef71fbdb9f963e42580132f19f1a757b7';
 
 /// See also [RecommendSpotViewModel].
 @ProviderFor(RecommendSpotViewModel)

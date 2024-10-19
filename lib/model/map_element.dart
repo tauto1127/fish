@@ -1,8 +1,5 @@
 import 'dart:math';
 
-import 'package:fish_hackathon/model/map_element_type.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
-
 //TODO: タイプによって必要引数を変える
 
 enum BeaconType { A, B, C }
@@ -17,31 +14,39 @@ enum RoomType {
 
 abstract class MapElement {
   const MapElement({
+    required this.floorNum,
     required this.point,
   });
   final Point<int> point;
+  final int floorNum;
 }
 
 class Floor extends MapElement {
   const Floor(
-      {required super.point, required this.width, required this.height});
+      {required super.point,
+      required super.floorNum,
+      required this.width,
+      required this.height});
   final int width;
   final int height;
 }
 
 class Wall extends MapElement {
-  const Wall({required super.point, required this.end});
+  const Wall(
+      {required super.point, required super.floorNum, required this.end});
   final Point<int> end;
 }
 
 class Beacon extends MapElement {
-  const Beacon({required super.point, required this.beacon});
+  const Beacon(
+      {required super.point, required super.floorNum, required this.beacon});
   final BeaconType beacon;
 }
 
 class Room extends MapElement {
   Room({
     required super.point,
+    required super.floorNum,
     required this.width,
     required this.height,
     required this.roomType,
