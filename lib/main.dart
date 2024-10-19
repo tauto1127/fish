@@ -35,7 +35,10 @@ class MyApp extends StatelessWidget {
         //
         // This works for code too, not just values: Most code changes can be
         // tested with just a hot reload.
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(
+            seedColor: Colors.deepPurple,
+            background: Colors.white,
+            surface: Colors.white),
         useMaterial3: true,
       ),
       routerDelegate: RoutemasterDelegate(
@@ -47,8 +50,7 @@ class MyApp extends StatelessWidget {
                       const MaterialPage<void>(child: PurposeExist()),
                   '/purpose_none_exist': (_) =>
                       const MaterialPage<void>(child: PurposeNoneExist()),
-                  '/navi': (_) =>
-                      const MaterialPage<void>(child: NaviView())
+                  '/navi': (_) => const MaterialPage<void>(child: NaviView())
                 },
               )),
       routeInformationParser: const RoutemasterParser(),
@@ -75,11 +77,15 @@ class MyHomePage extends StatefulWidget {
 }
 
 PreferredSizeWidget MirasutaAppBar = AppBar(
+  bottom: PreferredSize(preferredSize: Size(100, 0.1), child: Divider()),
   backgroundColor: Colors.white,
-  title: SvgPicture.asset(
-    'image/MIRASUTA_logo.svg',
-    width: 50,
-    height: 50,
+  title: Padding(
+    padding: const EdgeInsets.only(top: 10),
+    child: SvgPicture.asset(
+      'image/MIRASUTA_logo.svg',
+      width: 50,
+      height: 50,
+    ),
   ),
   centerTitle: true,
 );
