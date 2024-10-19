@@ -23,15 +23,14 @@ class RecommendSpotViewModel extends _$RecommendSpotViewModel {
   void filter(String query) {
     final mapState = ref.watch(mapViewModelProvider).elements;
     // final filteredSpots = spots.where((element) => mapState[element.mapElementIndex].name.contains(query)).toList();
-    final filterdSpots = spots.where((RecommendSpotModel element){
+    final filterdSpots = spots.where((RecommendSpotModel element) {
       MapElement el = mapState[element.mapElementIndex];
-      if (el is Room){
-        if(roomNameDict[el.room]!.contains(query)){
+      if (el is Room) {
+        if (roomNameDict[el.room]!.contains(query)) {
           return true;
         }
       }
       return false;
-
     }).toList();
     state = state.copyWith(filteredSpots: filterdSpots);
   }
