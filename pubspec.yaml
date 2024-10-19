@@ -43,8 +43,6 @@ dependencies:
   riverpod_generator: ^2.4.3
   flutter_riverpod: ^2.5.3
   routemaster: ^1.0.1
-  firebase_core: ^3.6.0
-  cloud_firestore: ^5.4.4
 
 dev_dependencies:
   flutter_test:
