@@ -6,6 +6,22 @@ part of 'navi_view_model.dart';
 // RiverpodGenerator
 // **************************************************************************
 
+String _$distanceFromMiddleHash() =>
+    r'e09aa588677a15803348ed4c85ca7633b042d0fa';
+
+/// See also [distanceFromMiddle].
+@ProviderFor(distanceFromMiddle)
+final distanceFromMiddleProvider = AutoDisposeProvider<int>.internal(
+  distanceFromMiddle,
+  name: r'distanceFromMiddleProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$distanceFromMiddleHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+typedef DistanceFromMiddleRef = AutoDisposeProviderRef<int>;
 String _$naviViewModelHash() => r'37463c590c68cb88611dd8e7e809c7574d50317d';
 
 /// See also [NaviViewModel].
