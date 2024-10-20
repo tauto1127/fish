@@ -15,7 +15,8 @@ class NaviView extends ConsumerStatefulWidget {
   ConsumerState<NaviView> createState() => _NaviViewState();
 }
 
-class _NaviViewState extends ConsumerState<NaviView> with SingleTickerProviderStateMixin {
+class _NaviViewState extends ConsumerState<NaviView>
+    with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<double> _animation;
   bool _hasAnimated = false;
@@ -24,10 +25,10 @@ class _NaviViewState extends ConsumerState<NaviView> with SingleTickerProviderSt
   void initState() {
     super.initState();
     _controller = AnimationController(
-      duration: const Duration(seconds: 2),
+      duration: const Duration(seconds: 9), // 2秒から4秒に変更
       vsync: this,
     );
-    _animation = Tween<double>(begin: -1.0, end: 0.0).animate(CurvedAnimation(
+    _animation = Tween<double>(begin: -2.0, end: 0.0).animate(CurvedAnimation(
       parent: _controller,
       curve: Curves.easeInOut,
     ));
@@ -61,21 +62,28 @@ class _NaviViewState extends ConsumerState<NaviView> with SingleTickerProviderSt
     if (currentPoint == null) {
       return const CircularProgressIndicator();
     }
-    final nextMidpoint = mapState.getNextMidpoint(currentPoint: currentPoint, destination: destinationPoint);
-    final distance = ((currentPoint.x - nextMidpoint.x).abs() + (currentPoint.y - nextMidpoint.y).abs()) / 200;
+    final nextMidpoint = mapState.getNextMidpoint(
+        currentPoint: currentPoint, destination: destinationPoint);
+    final distance = ((currentPoint.x - nextMidpoint.x).abs() +
+            (currentPoint.y - nextMidpoint.y).abs()) /
+        200;
 
-    if (currentPoint.x == destinationPoint.x && currentPoint.y == destinationPoint.y) {
-      WidgetsBinding.instance.addPostFrameCallback((timeStamp) => Routemaster.of(context).replace('/complete'));
+    if (currentPoint.x == destinationPoint.x &&
+        currentPoint.y == destinationPoint.y) {
+      WidgetsBinding.instance.addPostFrameCallback(
+          (timeStamp) => Routemaster.of(context).replace('/complete'));
       return const SizedBox.shrink();
     }
 
-    if (destinationPoint.x == currentPoint.x || destinationPoint.y == currentPoint.y) {
+    if (destinationPoint.x == currentPoint.x ||
+        destinationPoint.y == currentPoint.y) {
       if (!_hasAnimated) {
         _controller.forward();
         _hasAnimated = true;
       }
     }
 
+    RelativeDirection isStraight = RelativeDirection.straight;
     return Scaffold(
       appBar: MirasutaAppBar,
       body: Stack(
@@ -85,7 +93,8 @@ class _NaviViewState extends ConsumerState<NaviView> with SingleTickerProviderSt
               padding: const EdgeInsets.only(bottom: 600),
               child: Stack(
                 children: [
-                  if (destinationPoint.x == currentPoint.x || destinationPoint.y == currentPoint.y)
+                  if (destinationPoint.x == currentPoint.x ||
+                      destinationPoint.y == currentPoint.y)
                     AnimatedBuilder(
                       animation: _animation,
                       builder: (context, child) {
@@ -112,7 +121,6 @@ class _NaviViewState extends ConsumerState<NaviView> with SingleTickerProviderSt
                                   ),
                                 ],
                               ),
-                              const SizedBox(height: 10),
                             ],
                           ),
                         );
@@ -140,13 +148,17 @@ class _NaviViewState extends ConsumerState<NaviView> with SingleTickerProviderSt
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                Text((destinationPoint.x == currentPoint.x || destinationPoint.y == currentPoint.y) ? "目的地まであと" : "左折まであと"),
+                Text((destinationPoint.x == currentPoint.x ||
+                        destinationPoint.y == currentPoint.y)
+                    ? "目的地まであと"
+                    : "左折まであと"),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
                       "${distance.toInt()}",
-                      style: const TextStyle(fontSize: 50, fontWeight: FontWeight.bold),
+                      style: const TextStyle(
+                          fontSize: 50, fontWeight: FontWeight.bold),
                     ),
                     const Text(
                       "m",
@@ -166,10 +178,26 @@ class _NaviViewState extends ConsumerState<NaviView> with SingleTickerProviderSt
                   child: Padding(
                     padding: const EdgeInsets.all(15.0),
                     child: Transform.rotate(
-                      angle: (((destinationPoint.x == currentPoint.x || destinationPoint.y == currentPoint.y) && distance == 1) &&
-                              !(destinationPoint.x == currentPoint.x && destinationPoint.y == currentPoint.y))
-                          ? -pi / 2
-                          : 0,
+                      //angle: (((destinationPoint.x == currentPoint.x ||
+                      //                destinationPoint.y == currentPoint.y) &&
+                      //            distance == 1) &&
+                      //        !(destinationPoint.x == currentPoint.x &&
+                      //            destinationPoint.y == currentPoint.y) &&
+                      //        !(destinationPoint.x == currentPoint.x ||
+                      //            destinationPoint.y == currentPoint.y))
+                      //    ? -pi / 2
+                      //    : 0,
+                      angle: () {
+                        final direction =
+                            ref.watch(naviViewModelProvider).progressDirection;
+                        if (direction == RelativeDirection.left) {
+                          return -pi / 2;
+                        } else if (direction == RelativeDirection.right) {
+                          return pi / 2;
+                        } else {
+                          return 0.0;
+                        }
+                      }(),
                       // angle: -pi / 2,
                       // angle: 0,
                       child: const Icon(
@@ -193,5 +221,21 @@ class _NaviViewState extends ConsumerState<NaviView> with SingleTickerProviderSt
         ],
       ),
     );
+  }
+}
+
+class Compass extends StatefulWidget {
+  final int angle;
+  const Compass({super.key, required this.angle});
+
+  @override
+  State<Compass> createState() => _CompassState();
+}
+
+class _CompassState extends State<Compass> {
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    throw UnimplementedError();
   }
 }
