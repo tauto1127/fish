@@ -104,7 +104,7 @@ class MapViewModel extends _$MapViewModel {
           point: const Point<int>(4000, 6000),
           width: 2000,
           height: 2000,
-          roomType: RoomType.musium,
+          roomType: RoomType.museum,
           doorOffset: const Point<int>(1000, 2000),
           floorNum: 3,
         )

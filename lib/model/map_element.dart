@@ -1,7 +1,5 @@
 import 'dart:math';
 
-//TODO: タイプによって必要引数を変える
-
 enum BeaconType { A, B, C }
 
 enum RoomType {
@@ -16,7 +14,7 @@ enum RoomType {
   combinationCenter("社会連携センター"),
   gym("体育館"),
   bigHall("大講義室"),
-  musium("ミュージアム");
+  museum("ミュージアム");
 
   const RoomType(this.displayName);
   final String displayName;

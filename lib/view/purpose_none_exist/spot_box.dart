@@ -23,7 +23,7 @@ class SpotBox extends StatelessWidget {
           borderRadius: BorderRadius.circular(10),
         ),
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 10),
+          padding: const EdgeInsets.symmetric(horizontal: 10),
           child: Column(
             children: [
               Align(
@@ -45,8 +45,8 @@ class SpotBox extends StatelessWidget {
                 ),
               ),
               ClipRRect(
-                child: Image(image: AssetImage(imagePath)),
                 borderRadius: BorderRadius.circular(15),
+                child: Image(image: AssetImage(imagePath)),
               ),
               const SizedBox(
                 height: 10,

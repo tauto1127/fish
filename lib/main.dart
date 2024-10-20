@@ -10,9 +10,10 @@ import 'package:routemaster/routemaster.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  runApp(ProviderScope(child: MyApp()));
+  runApp(const ProviderScope(child: MyApp()));
 }
 
+// ignore: non_constant_identifier_names
 PreferredSizeWidget MirasutaAppBar = AppBar(
   bottom: const PreferredSize(preferredSize: Size(100, 0.1), child: Divider()),
   backgroundColor: Colors.white,
@@ -28,7 +29,7 @@ PreferredSizeWidget MirasutaAppBar = AppBar(
 );
 
 class MyApp extends StatelessWidget {
-  MyApp({super.key});
+  const MyApp({super.key});
 
   // This widget is the root of your application.
   @override
@@ -52,7 +53,7 @@ class MyApp extends StatelessWidget {
         //
         // This works for code too, not just values: Most code changes can be
         // tested with just a hot reload.
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple, background: Colors.white, surface: Colors.white),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple, surface: Colors.white),
         useMaterial3: true,
       ),
       routerDelegate: RoutemasterDelegate(
@@ -60,7 +61,7 @@ class MyApp extends StatelessWidget {
                 routes: {
                   '/': (_) => const MaterialPage<void>(child: MyHomePage(title: 'Flutter Demo Home')),
                   '/purpose_exist': (_) => const MaterialPage<void>(child: PurposeExist()),
-                  '/purpose_none_exist': (_) => MaterialPage<void>(child: PurposeNoneExist()),
+                  '/purpose_none_exist': (_) => const MaterialPage<void>(child: PurposeNoneExist()),
                   '/navi': (_) => const MaterialPage<void>(child: NaviView()),
                   '/complete': (_) => const MaterialPage<void>(child: CompleteView()),
                 },
@@ -138,7 +139,7 @@ class _MyHomePageState extends State<MyHomePage> {
       width: 320,
       height: 130,
       decoration: BoxDecoration(
-        color: Color.fromRGBO(254, 238, 172, 24),
+        color: const Color.fromRGBO(254, 238, 172, 24),
         border: Border.all(),
         borderRadius: const BorderRadius.all(Radius.circular(10)),
       ),
