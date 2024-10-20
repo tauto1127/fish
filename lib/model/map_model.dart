@@ -33,6 +33,7 @@ class MapModel {
 
     if (yDirectionDiff.abs() > xDirectionDiff.abs()) {
       if (yDirectionDiff.isNegative) {
+        
         return Direction.south;
       } else {
         return Direction.north;

@@ -29,6 +29,11 @@ class NaviViewModel extends _$NaviViewModel {
         point = Point(point.x-200, point.y);
         direction = Direction.west;
       } else {
+        if (direction==Direction.west) {
+          state = state.copyWith(progressDirection: RelativeDirection.left);
+          await Future.delayed(const Duration(seconds: 3));
+          state = state.copyWith(progressDirection: RelativeDirection.straight);
+        }
         point = Point(point.x, point.y-200);
         direction = Direction.south;
         if (point.y < destinationPoint.y) {

@@ -10,3 +10,9 @@ enum Direction {
   southWest,
   northWest
 }
+
+enum RelativeDirection {
+  straight,
+  left, 
+  right
+}
