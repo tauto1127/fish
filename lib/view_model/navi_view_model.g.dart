@@ -22,7 +22,7 @@ final distanceFromMiddleProvider = AutoDisposeProvider<int>.internal(
 );
 
 typedef DistanceFromMiddleRef = AutoDisposeProviderRef<int>;
-String _$naviViewModelHash() => r'b7992136547ce36a76a4ffbf0d9bb7cf3474776a';
+String _$naviViewModelHash() => r'8bc98fd5acb5f7b91e65b1717379b2434f678df9';
 
 /// See also [NaviViewModel].
 @ProviderFor(NaviViewModel)

@@ -19,6 +19,25 @@ class NaviViewModel extends _$NaviViewModel {
     return const NaviViewState();
   }
 
+  Future<void> moveToDestinationMock({required Point<int> destinationPoint}) async {
+    Point<int> point = const Point(5000, 3000);
+    Direction direction = Direction.west;
+    while (true) {
+      setCurrentLocation(floorName: FloorName.third, point: point, direction: direction);
+      await Future.delayed(const Duration(seconds: 1));
+      if (destinationPoint.x < point.x) {
+        point = Point(point.x-200, point.y);
+        direction = Direction.west;
+      } else {
+        point = Point(point.x, point.y-200);
+        direction = Direction.south;
+        if (point.y < destinationPoint.y) {
+          point = Point(destinationPoint.x, destinationPoint.y);
+        }
+      }
+    }
+  }
+
   void setCurrentLocation({required FloorName floorName, required Point<int> point, required Direction direction}) {
     state = state.copyWith(floorName: floorName, currentPoint: point, currentDirection: direction);
   }

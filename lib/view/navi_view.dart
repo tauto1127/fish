@@ -18,6 +18,9 @@ class NaviView extends ConsumerWidget {
     final destination = naviState.destinationRoom;
     final Point<int> destinationPoint = mapState.roomDict![destination!]!.door;
     final currentPoint = naviState.currentPoint;
+    
+
+
     if (currentPoint == null) {
       return const CircularProgressIndicator();
     }
@@ -58,9 +61,10 @@ class NaviView extends ConsumerWidget {
 
               //debugPrint(((currentLocation.x - nextMidpoint.x).abs() + (currentLocation.y - nextMidpoint.y).abs()) as String?);
 
-              if (nextMidpoint.x != destinationPoint.x || nextMidpoint.y != destinationPoint.y) {
-                ref.read(naviViewModelProvider.notifier).setMockMovedToNextMidpointLocation(point: nextMidpoint, direction: direction);
-              }
+              // if (nextMidpoint.x != destinationPoint.x || nextMidpoint.y != destinationPoint.y) {
+              //   ref.read(naviViewModelProvider.notifier).setMockMovedToNextMidpointLocation(point: nextMidpoint, direction: direction);
+              // }
+
               if (currentPoint == null) {
                 return SizedBox.shrink();
               }

@@ -49,6 +49,9 @@ class MapModel {
   Point<int> getNextMidpoint(
       {required Point<int> currentPoint, required Point<int> destination}) {
         late int returnXCandidate, returnYCandidate;
+        if (currentPoint.x == destination.x && currentPoint.y == destination.y) {
+          return currentPoint;
+        }
     switch (getDirectionOfMovement(
         currentPoint: currentPoint, destination: destination)) {
       case Direction.north:
