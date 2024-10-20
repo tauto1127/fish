@@ -126,11 +126,12 @@ class _NaviViewState extends ConsumerState<NaviView>
               final direction = mapState.getDirectionOfMovement(
                   currentPoint: currentPoint!, destination: destinationPoint);
 
-              //debugPrint(((currentLocation.x - nextMidpoint.x).abs() + (currentLocation.y - nextMidpoint.y).abs()) as String?);
-
-              // if (nextMidpoint.x != destinationPoint.x || nextMidpoint.y != destinationPoint.y) {
-              //   ref.read(naviViewModelProvider.notifier).setMockMovedToNextMidpointLocation(point: nextMidpoint, direction: direction);
-              // }
+                  ref.listen(naviViewModelProvider, (previous, next) {
+                    if (previous!.progressDirection != next.progressDirection) {
+                      print(previous.progressDirection);
+                      print(next.progressDirection);
+                    }
+                  });
 
               if (currentPoint == null) {
                 return SizedBox.shrink();
