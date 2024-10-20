@@ -21,7 +21,7 @@ class PurposeExist extends StatelessWidget {
         body: Consumer(
           builder: (context, ref, child) {
             final state = ref.watch(purposeExistViewModelProvider);
-            return Expanded(
+            return SingleChildScrollView(
               child: Column(
                 children: [
                   Padding(
@@ -50,34 +50,37 @@ class PurposeExist extends StatelessWidget {
                       ],
                     ),
                   ),
-                  Expanded(
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: ListView.builder(
-                        itemCount: state.length,
-                        itemBuilder: (context, index) {
-                          final element = state[index];
-                          return Padding(
-                            padding: const EdgeInsets.only(bottom: 8),
-                            child: ListTile(
-                              tileColor: Colors.grey[300],
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(15)),
-                              title: Text(element.roomType.displayName),
-                              onTap: () {
-                                ref
-                                    .read(naviViewModelProvider.notifier)
-                                    .setDestination(element.roomType);
-                                ref
-                                    .read(naviViewModelProvider.notifier)
-                                    // .setMockStartLocation();
-                                    .setCurrentLocation(floorName: FloorName.third, point: const Point<int>(5000, 3000), direction: Direction.west);
-                                Routemaster.of(context).push('/navi');
-                              },
-                            ),
-                          );
-                        },
-                      ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: ListView.builder(
+                      shrinkWrap: true,
+                      physics: NeverScrollableScrollPhysics(),
+                      itemCount: state.length,
+                      itemBuilder: (context, index) {
+                        final element = state[index];
+                        return Padding(
+                          padding: const EdgeInsets.only(bottom: 8),
+                          child: ListTile(
+                            tileColor: Colors.grey[300],
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(15)),
+                            title: Text(element.roomType.displayName),
+                            onTap: () {
+                              ref
+                                  .read(naviViewModelProvider.notifier)
+                                  .setDestination(element.roomType);
+                              ref
+                                  .read(naviViewModelProvider.notifier)
+                                  // .setMockStartLocation();
+                                  .setCurrentLocation(
+                                      floorName: FloorName.third,
+                                      point: const Point<int>(5000, 3000),
+                                      direction: Direction.west);
+                              Routemaster.of(context).push('/navi');
+                            },
+                          ),
+                        );
+                      },
                     ),
                   ),
                 ],
