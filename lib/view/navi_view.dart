@@ -114,7 +114,6 @@ class _NaviViewState extends ConsumerState<NaviView>
                                   Text(
                                     destination.displayName,
                                     style: const TextStyle(
-                                      height: 18,
                                       fontSize: 18,
                                       color: Colors.black,
                                     ),
