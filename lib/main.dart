@@ -1,6 +1,7 @@
 import 'package:fish_hackathon/view/navi_view.dart';
 import 'package:fish_hackathon/view/purpose_exist.dart';
 import 'package:fish_hackathon/view/purpose_none_exist/purpose_none_exist.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -17,8 +18,8 @@ PreferredSizeWidget MirasutaAppBar = AppBar(
   title: Padding(
     padding: const EdgeInsets.only(top: 10),
     child: SvgPicture.asset(
-      'image/MIRASUTA_logo.svg',
-      width: 50,
+      //'assets/image/MIRASUTA_logo.svg',
+      defaultTargetPlatform == TargetPlatform.android ? 'assets/image/MIRASUTA_logo.svg' : 'image/MIRASUTA_logo.svg',
       height: 50,
     ),
   ),
