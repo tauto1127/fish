@@ -30,9 +30,7 @@ class PurposeExist extends StatelessWidget {
                     child: TextFormField(
                       decoration: MirasutaTextFormFieldDecoration,
                       onChanged: (value) {
-                        ref
-                            .read(purposeExistViewModelProvider.notifier)
-                            .search(value);
+                        ref.read(purposeExistViewModelProvider.notifier).search(value);
                       },
                     ),
                   ),
@@ -51,41 +49,29 @@ class PurposeExist extends StatelessWidget {
                       ],
                     ),
                   ),
-                  Expanded(
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: ListView.builder(
-                        shrinkWrap: true,
-                        physics: NeverScrollableScrollPhysics(),
-                        itemCount: state.length,
-                        itemBuilder: (context, index) {
-                          final element = state[index];
-                          return Padding(
-                            padding: const EdgeInsets.only(bottom: 8),
-                            child: ListTile(
-                              tileColor: Colors.grey[300],
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(15)),
-                              title: Text(element.roomType.displayName),
-                              onTap: () {
-                                ref
-                                    .read(naviViewModelProvider.notifier)
-                                    .setDestination(element.roomType);
-                                ref
-                                    .watch(naviViewModelProvider.notifier)
-                                    .moveToDestinationMock(
-                                        destinationPoint: ref
-                                            .watch(mapViewModelProvider)
-                                            .roomDict![ref
-                                                .watch(naviViewModelProvider)
-                                                .destinationRoom]!
-                                            .door);
-                                Routemaster.of(context).push('/navi');
-                              },
-                            ),
-                          );
-                        },
-                      ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: ListView.builder(
+                      shrinkWrap: true,
+                      itemCount: state.length,
+                      itemBuilder: (context, index) {
+                        final element = state[index];
+                        return Padding(
+                          padding: const EdgeInsets.only(bottom: 8),
+                          child: ListTile(
+                            tileColor: Colors.grey[300],
+                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+                            title: Text(element.roomType.displayName),
+                            onTap: () {
+                              ref.read(naviViewModelProvider.notifier).setDestination(element.roomType);
+                              ref.watch(naviViewModelProvider.notifier).moveToDestinationMock(
+                                  destinationPoint:
+                                      ref.watch(mapViewModelProvider).roomDict![ref.watch(naviViewModelProvider).destinationRoom]!.door);
+                              Routemaster.of(context).push('/navi');
+                            },
+                          ),
+                        );
+                      },
                     ),
                   ),
                 ],
