@@ -72,6 +72,8 @@ flutter:
     - assets/image/map.webp
     - assets/image/squid.jpg
     - assets/image/MIRASUTA_logo.svg
+    - assets/image/IMG_0354.jpeg
+    - assets/image/IMG_0359.jpeg
     
 
   # An image asset can refer to one or more resolution-specific "variants", see

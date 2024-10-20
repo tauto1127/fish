@@ -22,7 +22,7 @@ class PurposeExist extends StatelessWidget {
         body: Consumer(
           builder: (context, ref, child) {
             final state = ref.watch(purposeExistViewModelProvider);
-            return Expanded(
+            return SingleChildScrollView(
               child: Column(
                 children: [
                   Padding(
@@ -55,6 +55,8 @@ class PurposeExist extends StatelessWidget {
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: ListView.builder(
+                        shrinkWrap: true,
+                        physics: NeverScrollableScrollPhysics(),
                         itemCount: state.length,
                         itemBuilder: (context, index) {
                           final element = state[index];
@@ -69,7 +71,15 @@ class PurposeExist extends StatelessWidget {
                                 ref
                                     .read(naviViewModelProvider.notifier)
                                     .setDestination(element.roomType);
-                                ref.watch(naviViewModelProvider.notifier).moveToDestinationMock(destinationPoint: ref.watch(mapViewModelProvider).roomDict![ref.watch(naviViewModelProvider).destinationRoom]!.door);
+                                ref
+                                    .watch(naviViewModelProvider.notifier)
+                                    .moveToDestinationMock(
+                                        destinationPoint: ref
+                                            .watch(mapViewModelProvider)
+                                            .roomDict![ref
+                                                .watch(naviViewModelProvider)
+                                                .destinationRoom]!
+                                            .door);
                                 Routemaster.of(context).push('/navi');
                               },
                             ),

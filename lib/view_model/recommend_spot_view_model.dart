@@ -9,9 +9,12 @@ part 'recommend_spot_view_model.g.dart';
 @Riverpod(keepAlive: true)
 class RecommendSpotViewModel extends _$RecommendSpotViewModel {
   final spots = [
-    const RecommendSpotModel(mapElementIndex: 3, imagePath: "assets/image/squid.jpg", subText: "11:30~13:00"),
-    const RecommendSpotModel(mapElementIndex: 4, imagePath: "assets/image/map.webp")
+    //食堂
+    const RecommendSpotModel(mapElementIndex: 6, imagePath: "assets/image/IMG_0354.jpeg", subText: "11:30~13:00"),
+    //イカボ
+    const RecommendSpotModel(mapElementIndex: 7, imagePath: "assets/image/IMG_0359.jpeg"),
   ];
+
   @override
   RecommendViewState build() {
     return RecommendViewState(
@@ -22,10 +25,10 @@ class RecommendSpotViewModel extends _$RecommendSpotViewModel {
 
   void filter(String query) {
     final mapState = ref.watch(mapViewModelProvider).elements;
-    final filteredSpots = spots.where((RecommendSpotModel element){
+    final filteredSpots = spots.where((RecommendSpotModel element) {
       MapElement el = mapState[element.mapElementIndex];
-      if (el is Room){
-        if(el.roomType.displayName.contains(query)){
+      if (el is Room) {
+        if (el.roomType.displayName.contains(query)) {
           return true;
         }
       }
