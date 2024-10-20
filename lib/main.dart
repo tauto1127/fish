@@ -1,3 +1,4 @@
+import 'package:fish_hackathon/view/complete_view.dart';
 import 'package:fish_hackathon/view/navi_view.dart';
 import 'package:fish_hackathon/view/purpose_exist.dart';
 import 'package:fish_hackathon/view/purpose_none_exist/purpose_none_exist.dart';
@@ -60,7 +61,8 @@ class MyApp extends StatelessWidget {
                   '/': (_) => const MaterialPage<void>(child: MyHomePage(title: 'Flutter Demo Home')),
                   '/purpose_exist': (_) => const MaterialPage<void>(child: PurposeExist()),
                   '/purpose_none_exist': (_) => MaterialPage<void>(child: PurposeNoneExist()),
-                  '/navi': (_) => const MaterialPage<void>(child: NaviView())
+                  '/navi': (_) => const MaterialPage<void>(child: NaviView()),
+                  '/complete': (_) => const MaterialPage<void>(child: CompleteView()),
                 },
               )),
       routeInformationParser: const RoutemasterParser(),
