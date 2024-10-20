@@ -18,7 +18,7 @@ class MapModel {
     eastWestWalls = walls.where((wall) => wall.point.y == wall.end.y).toList();
     eastWestWalls.sort((a, b) => a.point.x.compareTo(b.point.x));
   }
-  final movementPadding = 200;
+  final movementPadding = 0;
   FloorName floorName;
   List<MapElement> elements;
   Map<RoomType, Room>? roomDict;
@@ -33,7 +33,7 @@ class MapModel {
 
     if (yDirectionDiff.abs() > xDirectionDiff.abs()) {
       if (yDirectionDiff.isNegative) {
-        
+
         return Direction.south;
       } else {
         return Direction.north;

@@ -1,8 +1,6 @@
 import 'dart:math';
 
 import 'package:fish_hackathon/main.dart';
-import 'package:fish_hackathon/model/map_element.dart';
-import 'package:fish_hackathon/model/map_model.dart';
 import 'package:fish_hackathon/view_model/map_view_model.dart';
 import 'package:fish_hackathon/view_model/navi_view_model.dart';
 import 'package:flutter/material.dart';
@@ -81,7 +79,7 @@ class _NaviViewState extends ConsumerState<NaviView>
         children: [
           Center(
             child: Padding(
-              padding: EdgeInsets.only(bottom: 600),
+              padding: const EdgeInsets.only(bottom: 600),
               child: Stack(
                 children: [
                   if (destinationPoint.x == currentPoint.x ||
@@ -104,14 +102,15 @@ class _NaviViewState extends ConsumerState<NaviView>
                                   ),
                                   Text(
                                     destination.displayName,
-                                    style: TextStyle(
+                                    style: const TextStyle(
+                                      height: 18,
                                       fontSize: 18,
                                       color: Colors.black,
                                     ),
                                   ),
                                 ],
                               ),
-                              SizedBox(height: 10),
+                              const SizedBox(height: 10),
                             ],
                           ),
                         );
@@ -124,19 +123,7 @@ class _NaviViewState extends ConsumerState<NaviView>
           Consumer(
             builder: (context, ref, child) {
               final direction = mapState.getDirectionOfMovement(
-                  currentPoint: currentPoint!, destination: destinationPoint);
-
-                  ref.listen(naviViewModelProvider, (previous, next) {
-                    if (previous!.progressDirection != next.progressDirection) {
-                      print(previous.progressDirection);
-                      print(next.progressDirection);
-                    }
-                  });
-
-              if (currentPoint == null) {
-                return SizedBox.shrink();
-              }
-
+                  currentPoint: currentPoint, destination: destinationPoint);
               return Text(
                 "現在地: (${currentPoint.x}, ${currentPoint.y})\n"
                 "目的地: ${destination.displayName}, (${destinationPoint.x}, ${destinationPoint.y})\n"
@@ -163,13 +150,13 @@ class _NaviViewState extends ConsumerState<NaviView>
                       style: const TextStyle(
                           fontSize: 50, fontWeight: FontWeight.bold),
                     ),
-                    Text(
+                    const Text(
                       "m",
                       style: TextStyle(fontSize: 35),
                     )
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 Container(
@@ -187,12 +174,12 @@ class _NaviViewState extends ConsumerState<NaviView>
                     ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 50,
                 ),
                 Text(
                   "目的地: ${destination.displayName}",
-                  style: TextStyle(fontSize: 30),
+                  style: const TextStyle(fontSize: 30),
                 ),
               ],
             ),
