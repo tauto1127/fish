@@ -89,7 +89,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -105,12 +104,12 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text(
+            const Text(
               "公立はこだて未来大学へようこそ！\nあなたの目的を教えてください",
               textAlign: TextAlign.center,
               style: TextStyle(fontSize: 22),
             ),
-            SizedBox(
+            const SizedBox(
               height: 60,
             ),
             TextButton(
@@ -119,7 +118,7 @@ class _MyHomePageState extends State<MyHomePage> {
               },
               child: _buttonChild("○○に行きたい！", "目的地を自分で設定できるモードです"),
             ),
-            SizedBox(
+            const SizedBox(
               height: 30,
             ),
             TextButton(
@@ -156,14 +155,4 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
-  }
 }
