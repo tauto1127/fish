@@ -13,6 +13,7 @@ class NaviViewState with _$NaviViewState {
     FloorName? floorName,
     Point<int>? currentPoint,
     Direction? currentDirection,
+    @Default(RelativeDirection.straight) RelativeDirection progressDirection,
     RoomType? destinationRoom,
   }) = _NaviViewState;
 }
