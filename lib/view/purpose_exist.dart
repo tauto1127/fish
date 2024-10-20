@@ -26,9 +26,7 @@ class PurposeExist extends StatelessWidget {
                     child: TextFormField(
                       decoration: MirasutaTextFormFieldDecoration,
                       onChanged: (value) {
-                        ref
-                            .read(purposeExistViewModelProvider.notifier)
-                            .search(value);
+                        ref.read(purposeExistViewModelProvider.notifier).search(value);
                       },
                     ),
                   ),

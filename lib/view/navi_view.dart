@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:fish_hackathon/main.dart';
+import 'package:fish_hackathon/model/direction.dart';
 import 'package:fish_hackathon/view_model/map_view_model.dart';
 import 'package:fish_hackathon/view_model/navi_view_model.dart';
 import 'package:flutter/material.dart';
@@ -14,8 +15,7 @@ class NaviView extends ConsumerStatefulWidget {
   ConsumerState<NaviView> createState() => _NaviViewState();
 }
 
-class _NaviViewState extends ConsumerState<NaviView>
-    with SingleTickerProviderStateMixin {
+class _NaviViewState extends ConsumerState<NaviView> with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<double> _animation;
   bool _hasAnimated = false;
@@ -39,6 +39,17 @@ class _NaviViewState extends ConsumerState<NaviView>
     super.dispose();
   }
 
+  int getKakudo(RelativeDirection direction) {
+    switch (direction) {
+      case RelativeDirection.straight:
+        return 90;
+      case RelativeDirection.right:
+        return 0;
+      case RelativeDirection.left:
+        return 180;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final naviState = ref.watch(naviViewModelProvider);
@@ -46,27 +57,19 @@ class _NaviViewState extends ConsumerState<NaviView>
     final destination = naviState.destinationRoom;
     final Point<int> destinationPoint = mapState.roomDict![destination!]!.door;
     final currentPoint = naviState.currentPoint;
-    
-
 
     if (currentPoint == null) {
       return const CircularProgressIndicator();
     }
-    final nextMidpoint = mapState.getNextMidpoint(
-        currentPoint: currentPoint, destination: destinationPoint);
-    final distance = ((currentPoint.x - nextMidpoint.x).abs() +
-            (currentPoint.y - nextMidpoint.y).abs()) /
-        200;
+    final nextMidpoint = mapState.getNextMidpoint(currentPoint: currentPoint, destination: destinationPoint);
+    final distance = ((currentPoint.x - nextMidpoint.x).abs() + (currentPoint.y - nextMidpoint.y).abs()) / 200;
 
-    if (currentPoint.x == destinationPoint.x &&
-        currentPoint.y == destinationPoint.y) {
-      WidgetsBinding.instance.addPostFrameCallback(
-          (timeStamp) => Routemaster.of(context).replace('/complete'));
+    if (currentPoint.x == destinationPoint.x && currentPoint.y == destinationPoint.y) {
+      WidgetsBinding.instance.addPostFrameCallback((timeStamp) => Routemaster.of(context).replace('/complete'));
       return const SizedBox.shrink();
     }
 
-    if (destinationPoint.x == currentPoint.x ||
-        destinationPoint.y == currentPoint.y) {
+    if (destinationPoint.x == currentPoint.x || destinationPoint.y == currentPoint.y) {
       if (!_hasAnimated) {
         _controller.forward();
         _hasAnimated = true;
@@ -82,8 +85,7 @@ class _NaviViewState extends ConsumerState<NaviView>
               padding: const EdgeInsets.only(bottom: 600),
               child: Stack(
                 children: [
-                  if (destinationPoint.x == currentPoint.x ||
-                      destinationPoint.y == currentPoint.y)
+                  if (destinationPoint.x == currentPoint.x || destinationPoint.y == currentPoint.y)
                     AnimatedBuilder(
                       animation: _animation,
                       builder: (context, child) {
@@ -138,17 +140,13 @@ class _NaviViewState extends ConsumerState<NaviView>
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                Text((destinationPoint.x == currentPoint.x ||
-                        destinationPoint.y == currentPoint.y)
-                    ? "目的地まであと"
-                    : "左折まであと"),
+                Text((destinationPoint.x == currentPoint.x || destinationPoint.y == currentPoint.y) ? "目的地まであと" : "左折まであと"),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
                       "${distance.toInt()}",
-                      style: const TextStyle(
-                          fontSize: 50, fontWeight: FontWeight.bold),
+                      style: const TextStyle(fontSize: 50, fontWeight: FontWeight.bold),
                     ),
                     const Text(
                       "m",
@@ -165,12 +163,20 @@ class _NaviViewState extends ConsumerState<NaviView>
                     border: Border.all(width: 10, color: Colors.grey[500]!),
                     color: Colors.grey[200],
                   ),
-                  child: const Padding(
-                    padding: EdgeInsets.all(15.0),
-                    child: Icon(
-                      Icons.navigation,
-                      size: 160,
-                      color: Colors.blue,
+                  child: Padding(
+                    padding: const EdgeInsets.all(15.0),
+                    child: Transform.rotate(
+                      angle: (((destinationPoint.x == currentPoint.x || destinationPoint.y == currentPoint.y) && distance == 1) &&
+                              !(destinationPoint.x == currentPoint.x && destinationPoint.y == currentPoint.y))
+                          ? -pi / 2
+                          : 0,
+                      // angle: -pi / 2,
+                      // angle: 0,
+                      child: const Icon(
+                        Icons.navigation,
+                        size: 160,
+                        color: Colors.blue,
+                      ),
                     ),
                   ),
                 ),

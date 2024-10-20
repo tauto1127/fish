@@ -19,7 +19,7 @@ mixin _$NaviViewState {
   FloorName? get floorName => throw _privateConstructorUsedError;
   Point<int>? get currentPoint => throw _privateConstructorUsedError;
   Direction? get currentDirection => throw _privateConstructorUsedError;
-  dynamic get progressDirection => throw _privateConstructorUsedError;
+  RelativeDirection get progressDirection => throw _privateConstructorUsedError;
   RoomType? get destinationRoom => throw _privateConstructorUsedError;
 
   /// Create a copy of NaviViewState
@@ -39,7 +39,7 @@ abstract class $NaviViewStateCopyWith<$Res> {
       {FloorName? floorName,
       Point<int>? currentPoint,
       Direction? currentDirection,
-      dynamic progressDirection,
+      RelativeDirection progressDirection,
       RoomType? destinationRoom});
 }
 
@@ -61,7 +61,7 @@ class _$NaviViewStateCopyWithImpl<$Res, $Val extends NaviViewState>
     Object? floorName = freezed,
     Object? currentPoint = freezed,
     Object? currentDirection = freezed,
-    Object? progressDirection = freezed,
+    Object? progressDirection = null,
     Object? destinationRoom = freezed,
   }) {
     return _then(_value.copyWith(
@@ -77,10 +77,10 @@ class _$NaviViewStateCopyWithImpl<$Res, $Val extends NaviViewState>
           ? _value.currentDirection
           : currentDirection // ignore: cast_nullable_to_non_nullable
               as Direction?,
-      progressDirection: freezed == progressDirection
+      progressDirection: null == progressDirection
           ? _value.progressDirection
           : progressDirection // ignore: cast_nullable_to_non_nullable
-              as dynamic,
+              as RelativeDirection,
       destinationRoom: freezed == destinationRoom
           ? _value.destinationRoom
           : destinationRoom // ignore: cast_nullable_to_non_nullable
@@ -101,7 +101,7 @@ abstract class _$$NaviViewStateImplCopyWith<$Res>
       {FloorName? floorName,
       Point<int>? currentPoint,
       Direction? currentDirection,
-      dynamic progressDirection,
+      RelativeDirection progressDirection,
       RoomType? destinationRoom});
 }
 
@@ -121,7 +121,7 @@ class __$$NaviViewStateImplCopyWithImpl<$Res>
     Object? floorName = freezed,
     Object? currentPoint = freezed,
     Object? currentDirection = freezed,
-    Object? progressDirection = freezed,
+    Object? progressDirection = null,
     Object? destinationRoom = freezed,
   }) {
     return _then(_$NaviViewStateImpl(
@@ -137,9 +137,10 @@ class __$$NaviViewStateImplCopyWithImpl<$Res>
           ? _value.currentDirection
           : currentDirection // ignore: cast_nullable_to_non_nullable
               as Direction?,
-      progressDirection: freezed == progressDirection
-          ? _value.progressDirection!
-          : progressDirection,
+      progressDirection: null == progressDirection
+          ? _value.progressDirection
+          : progressDirection // ignore: cast_nullable_to_non_nullable
+              as RelativeDirection,
       destinationRoom: freezed == destinationRoom
           ? _value.destinationRoom
           : destinationRoom // ignore: cast_nullable_to_non_nullable
@@ -166,7 +167,7 @@ class _$NaviViewStateImpl implements _NaviViewState {
   final Direction? currentDirection;
   @override
   @JsonKey()
-  final dynamic progressDirection;
+  final RelativeDirection progressDirection;
   @override
   final RoomType? destinationRoom;
 
@@ -186,20 +187,15 @@ class _$NaviViewStateImpl implements _NaviViewState {
                 other.currentPoint == currentPoint) &&
             (identical(other.currentDirection, currentDirection) ||
                 other.currentDirection == currentDirection) &&
-            const DeepCollectionEquality()
-                .equals(other.progressDirection, progressDirection) &&
+            (identical(other.progressDirection, progressDirection) ||
+                other.progressDirection == progressDirection) &&
             (identical(other.destinationRoom, destinationRoom) ||
                 other.destinationRoom == destinationRoom));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      floorName,
-      currentPoint,
-      currentDirection,
-      const DeepCollectionEquality().hash(progressDirection),
-      destinationRoom);
+  int get hashCode => Object.hash(runtimeType, floorName, currentPoint,
+      currentDirection, progressDirection, destinationRoom);
 
   /// Create a copy of NaviViewState
   /// with the given fields replaced by the non-null parameter values.
@@ -215,7 +211,7 @@ abstract class _NaviViewState implements NaviViewState {
       {final FloorName? floorName,
       final Point<int>? currentPoint,
       final Direction? currentDirection,
-      final dynamic progressDirection,
+      final RelativeDirection progressDirection,
       final RoomType? destinationRoom}) = _$NaviViewStateImpl;
 
   @override
@@ -225,7 +221,7 @@ abstract class _NaviViewState implements NaviViewState {
   @override
   Direction? get currentDirection;
   @override
-  dynamic get progressDirection;
+  RelativeDirection get progressDirection;
   @override
   RoomType? get destinationRoom;
 
